@@ -1,0 +1,14 @@
+body {
+    background-color: #ecf0f1;
+    color: #34495e;
+}
+
+.sign-out-btn {
+    background-color: #f1c40f;
+    color: white;
+}
+
+.register-btn {
+    background-color: #3498db;
+    color: #ecf0f1;
+}

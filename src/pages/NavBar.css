@@ -1,0 +1,36 @@
+.navbar {
+    overflow: hidden;
+    background-color: #34495e;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.float-right {
+    float: right;
+}
+
+.navbar-logo,
+.app-name {
+    pointer-events: none;
+    cursor: default;
+}
+
+.img-fluid {
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}

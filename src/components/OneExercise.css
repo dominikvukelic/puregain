@@ -1,0 +1,9 @@
+.item {
+    background-color: #3498db;
+    color: white;
+}
+
+.item-delete-btn {
+    background-color: white;
+    color: black;
+}
