@@ -1,6 +1,6 @@
 import React, { useState, useEffect, createContext } from 'react';
 
-import { addDoc, collection, deleteDoc, doc, getDocs, setDoc, updateDoc, limit, orderBy, startAfter } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import database from '../FirebaseConfig';
 
 export const TrainingContext = createContext();
