@@ -5,10 +5,9 @@ import MainMenu from './MainMenu';
 export default function NavBar() {
     return (
         <div>
-            console.log(logo);
             <div className="navbar">
                 <div>
-                    <a class="navbar-logo" href="/">
+                    <a className="navbar-logo" href="/">
                         <img src="./images/logo.jpg" alt="app logo" className="img-fluid" />
                     </a>
                 </div>

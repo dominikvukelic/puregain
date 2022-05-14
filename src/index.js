@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ColorModeScript } from '@chakra-ui/react';
 import theme from './theme';
+import { BrowserRouter } from 'react-router-dom';
+import { TrainingProvider } from './context/TrainingContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-        <App />
+        <TrainingProvider>
+            <BrowserRouter>
+                <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+
+                <App />
+            </BrowserRouter>
+        </TrainingProvider>
     </React.StrictMode>
 );
 

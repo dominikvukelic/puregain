@@ -16,10 +16,16 @@ import {
     Stack,
 } from '@chakra-ui/react';
 import DatePickerComponent from './DatePicker';
+import { useNavigate } from 'react-router-dom';
+import TrainingPage from '../pages/TrainingPage';
 
 function PopUpTraining() {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [trainingName, setTrainingName] = useState('');
+    const navigate = useNavigate();
+    const handleOpenTraining = () => {
+        navigate('/trainingpage');
+    };
 
     return (
         <>
@@ -49,7 +55,10 @@ function PopUpTraining() {
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button colorScheme="blue"> Confirm</Button>
+                        <Button colorScheme="blue" onClick={handleOpenTraining}>
+                            {' '}
+                            Confirm
+                        </Button>
                         <Button variant="ghost" mr={3} onClick={onClose}>
                             Close
                         </Button>

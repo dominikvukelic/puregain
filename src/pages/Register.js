@@ -22,8 +22,6 @@ import {
     NumberDecrementStepper,
 } from '@chakra-ui/react';
 
-import { userLogin } from '../utils/mockApi';
-import ErrorMessage from '../components/ErrorMessage';
 import './Register.css';
 
 export default function Register() {
@@ -40,32 +38,6 @@ export default function Register() {
     const [isLoading, setIsLoading] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-
-        setIsLoading(true);
-
-        try {
-            await userLogin({ name, surname, username, email, password, gender, age, height, weight });
-            setIsLoggedIn(true);
-            setIsLoading(false);
-            setShowPassword(false);
-        } catch (error) {
-            setError('Invalid username or password');
-            setIsLoading(false);
-            setName('');
-            setSurname('');
-            setUsername('');
-            setAge('');
-            setGender('');
-            setHeight('');
-            setWeight('');
-            setEmail('');
-            setPassword('');
-            setShowPassword(false);
-        }
-    };
 
     const handlePasswordVisibility = () => setShowPassword(!showPassword);
 
@@ -85,8 +57,7 @@ export default function Register() {
                             <Heading>Register</Heading>
                         </Box>
                         <Box marginY={4} textAlign="left">
-                            <form onSubmit={handleSubmit}>
-                                {error && <ErrorMessage message={error} />}
+                            <form /* onSubmit={handleSubmit} */>
                                 <FormControl isRequired>
                                     <FormLabel>Name</FormLabel>
                                     <Input

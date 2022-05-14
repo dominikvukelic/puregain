@@ -15,8 +15,6 @@ import {
     InputLeftAddon,
 } from '@chakra-ui/react';
 
-import { userLogin } from '../utils/mockApi';
-import ErrorMessage from '../components/ErrorMessage';
 import './Login.css';
 
 export default function Login() {
@@ -26,25 +24,6 @@ export default function Login() {
     const [isLoading, setIsLoading] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-
-        setIsLoading(true);
-
-        try {
-            await userLogin({ username, password });
-            setIsLoggedIn(true);
-            setIsLoading(false);
-            setShowPassword(false);
-        } catch (error) {
-            setError('Invalid username or password');
-            setIsLoading(false);
-            setUsername('');
-            setPassword('');
-            setShowPassword(false);
-        }
-    };
 
     const handlePasswordVisibility = () => setShowPassword(!showPassword);
 
@@ -71,8 +50,7 @@ export default function Login() {
                             <Heading>Login</Heading>
                         </Box>
                         <Box marginY={4} textAlign="left">
-                            <form onSubmit={handleSubmit}>
-                                {error && <ErrorMessage message={error} />}
+                            <form /* onSubmit={handleSubmit} */>
                                 <FormControl isRequired>
                                     <FormLabel>Username</FormLabel>
                                     <InputGroup>

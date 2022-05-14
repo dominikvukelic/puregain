@@ -2,7 +2,7 @@ import React from 'react';
 
 import {
     Drawer,
-    DrawerBody,
+    /* DrawerBody, */
     DrawerHeader,
     DrawerOverlay,
     DrawerContent,
@@ -13,11 +13,32 @@ import {
 } from '@chakra-ui/react';
 import { ThreeBarsIcon } from '@primer/octicons-react';
 import './MainMenu.css';
+import { useNavigate } from 'react-router-dom';
 
 function MainMenu() {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = React.useRef();
-
+    const navigate = useNavigate();
+    const handleOpenUserInfo = () => {
+        navigate('/userinfo');
+        onClose();
+    };
+    const handleTrainingHistory = () => {
+        navigate('/traininghistory');
+        onClose();
+    };
+    const handleListOfExercises = () => {
+        navigate('/listofexercises');
+        onClose();
+    };
+    const handleReturnHome = () => {
+        navigate('/');
+        onClose();
+    };
+    const handleLogOut = () => {
+        navigate('/login');
+        onClose();
+    };
     return (
         <>
             <IconButton ref={btnRef} icon={<ThreeBarsIcon />} bg="brand" onClick={onOpen} className="threebaricon"></IconButton>
@@ -26,8 +47,11 @@ function MainMenu() {
                 <DrawerContent>
                     <DrawerCloseButton />
                     <DrawerHeader>User data</DrawerHeader>
-                    <Button>User Info</Button>
-                    <Button>List of exercises</Button>
+                    <Button onClick={handleReturnHome}>Home</Button>
+                    <Button onClick={handleOpenUserInfo}>User Info</Button>
+                    <Button onClick={handleTrainingHistory}>Training History</Button>
+                    <Button onClick={handleListOfExercises}>List of exercises</Button>
+                    <Button onClick={handleLogOut}>Log Out</Button>
                     {/* <DrawerBody>
                         <Input placeholder="Type here..." />
                     </DrawerBody> */}
