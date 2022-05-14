@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption, TableContainer } from '@chakra-ui/react';
+import { Table, Thead, Tbody, Tr, Th, Td, TableContainer } from '@chakra-ui/react';
 import { TrainingContext } from '../context/TrainingContext';
 
 function TrainingHistory() {
