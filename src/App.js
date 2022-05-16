@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeProvider, theme, ColorModeProvider, CSSReset } from '@chakra-ui/react';
+import { ThemeProvider, theme, CSSReset } from '@chakra-ui/react';
 
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -31,14 +31,12 @@ export default function App() {
                     </Routes>
                 </div>
 
-                {/*  <ColorModeProvider> */}
-
                 <CSSReset />
-                {/* <ThemeToggler /> */}
+
                 {/* <Login />
                 <Register />
                 <DatePicker /> */}
-                {/*    </ColorModeProvider> */}
+
                 {/*  <MyCalendar /> */}
             </ThemeProvider>
         </>
