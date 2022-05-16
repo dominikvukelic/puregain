@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ColorModeScript } from '@chakra-ui/react';
+import { ColorModeScript } from '@chakra-ui/color-mode';
+import { ChakraProvider } from '@chakra-ui/react';
 import theme from './theme';
 import { BrowserRouter } from 'react-router-dom';
 import { TrainingProvider } from './context/TrainingContext';
@@ -11,13 +12,14 @@ import { TrainingProvider } from './context/TrainingContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <TrainingProvider>
-            <BrowserRouter>
-                <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-
-                <App />
-            </BrowserRouter>
-        </TrainingProvider>
+        <ChakraProvider theme={theme}>
+            <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+            <TrainingProvider>
+                <BrowserRouter>
+                    <App />
+                </BrowserRouter>
+            </TrainingProvider>
+        </ChakraProvider>
     </React.StrictMode>
 );
 

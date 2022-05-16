@@ -20,6 +20,7 @@ export default function App() {
         <>
             <ThemeProvider theme={theme}>
                 <NavBar />
+
                 <div className="routes-wrapper">
                     <Routes>
                         <Route exact path="/" element={<PopUpTraining />} />

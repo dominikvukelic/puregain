@@ -1,6 +1,7 @@
 import React from 'react';
 import './NavBar.css';
 import MainMenu from './MainMenu';
+import ToggleColorMode from '../components/ToggleColorMode';
 
 export default function NavBar() {
     return (
@@ -14,7 +15,10 @@ export default function NavBar() {
                 <a className="app-name" href="/">
                     PureGain
                 </a>
-                <div className="float-right">
+                <div className="togglecolormode">
+                    <ToggleColorMode />
+                </div>
+                <div className="main-menu">
                     <MainMenu />
                 </div>
             </div>

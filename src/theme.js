@@ -1,41 +1,25 @@
 import { extendTheme } from '@chakra-ui/react';
 
-const theme = extendTheme({
-    initialColorMode: 'light',
-    useSystemColorMode: false,
-    colors: {
-        brand: {
-            100: '#ecf0f1',
-            // ...samo je 900 stavljen za sad
-            900: '#34495e',
-        },
+const theme = {
+    config: {
+        intialColorMode: 'dark',
+        useSystemColorMode: true,
     },
-    components: {
-        Button: {
-            baseStyle: {
-                fontWeight: 'bold',
+    styles: {
+        global: {
+            body: {
+                margin: 0,
+                'font-family':
+                    "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',sans-serif",
+                '-webkit-font-smoothing': 'antialiased',
+                '-moz-osx-font-smoothing': 'grayscale',
             },
 
-            sizes: {
-                xl: {
-                    h: '56px',
-                    fontSize: 'lg',
-                    px: '32px',
-                },
-            },
-
-            variants: {
-                'with-shadow': {
-                    bg: 'red.400',
-                    boxShadow: '0 0 2px 2px #efdfde',
-                },
-
-                solid: (props) => ({
-                    bg: props.colorMode === 'dark' ? 'red.300' : 'red.500',
-                }),
+            code: {
+                'font-family': "source-code-pro, Menlo, Monaco, Consolas, 'Courier New',monospace",
             },
         },
     },
-});
+};
 
-export default theme;
+export default extendTheme(theme);
