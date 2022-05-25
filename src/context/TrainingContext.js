@@ -1,6 +1,6 @@
 import React, { useState, useEffect, createContext } from 'react';
 
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, addDoc } from 'firebase/firestore';
 import database from '../FirebaseConfig';
 
 export const TrainingContext = createContext();
@@ -13,6 +13,13 @@ const getExercisesDoneDuringTraining = async (idTreninga) => {
         ExercisesDoneDuringTraining.push({ id: doc.id, ...doc.data() });
     });
     return ExercisesDoneDuringTraining;
+};
+export const addTraining = async (data, direction, state, setState) => {
+    try {
+        await addDoc(collection(database, direction), { ...data });
+    } catch (e) {
+        console.error('Error adding data to the database: ', e);
+    }
 };
 
 export const getTraining = async (dbPath, setData) => {
@@ -28,9 +35,15 @@ export const getTraining = async (dbPath, setData) => {
 
 export function TrainingProvider({ children }) {
     const [trainingData, setTrainingData] = useState([]);
+    const [date, setDate] = useState(new Date());
+    const [trainingNametemp, setTrainingNametemp] = useState('');
     useEffect(() => {
         getTraining('trainings', setTrainingData);
     }, []);
     console.log(trainingData);
-    return <TrainingContext.Provider value={{ trainingData }}>{children}</TrainingContext.Provider>;
+    return (
+        <TrainingContext.Provider value={{ trainingData, addTraining, date, trainingNametemp, setDate, setTrainingNametemp }}>
+            {children}
+        </TrainingContext.Provider>
+    );
 }

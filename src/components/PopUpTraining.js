@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import {
     Modal,
@@ -15,21 +15,35 @@ import {
     InputGroup,
     Stack,
 } from '@chakra-ui/react';
-import DatePickerComponent from './DatePicker';
+/* import DatePickerComponent from './DatePicker'; */
 import { useNavigate } from 'react-router-dom';
 import TrainingPage from '../pages/TrainingPage';
+import { TrainingContext } from '../context/TrainingContext';
+import DatePicker from 'react-datepicker';
+
+import 'react-datepicker/dist/react-datepicker.css';
+
+import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 function PopUpTraining() {
+    const { addTraining, setDate, setTrainingNametemp } = useContext(TrainingContext);
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [trainingName, setTrainingName] = useState('');
+
+    const [startDate, setStartDate] = useState(new Date());
     const navigate = useNavigate();
     const handleOpenTraining = () => {
+        setDate(startDate);
+        setTrainingNametemp(trainingName);
+
         navigate('/trainingpage');
     };
 
     return (
         <>
-            <Button onClick={onOpen}>Make a new training plan</Button>
+            <Button onClick={onOpen} colorScheme="teal">
+                Make a new training plan
+            </Button>
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
@@ -50,7 +64,7 @@ function PopUpTraining() {
                                 />
                             </InputGroup>
                             <FormLabel>Time</FormLabel>
-                            <DatePickerComponent />
+                            <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
                         </Stack>
                     </ModalBody>
 

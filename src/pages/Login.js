@@ -15,8 +15,6 @@ import {
     InputLeftAddon,
 } from '@chakra-ui/react';
 
-import './Login.css';
-
 export default function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -28,7 +26,7 @@ export default function Login() {
     const handlePasswordVisibility = () => setShowPassword(!showPassword);
 
     return (
-        <Flex width="full" align="center" justifyContent="center">
+        <Flex width="full" align="center" justifyContent="center" paddingTop="60px" max>
             <Box padding={8} maxWidth="500px" borderWidth={1} borderRadius={8} boxShadow="lg">
                 {isLoggedIn ? (
                     <Box textAlign="center">

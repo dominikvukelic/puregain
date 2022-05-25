@@ -1,16 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Button, Box, Stack, Grid, GridItem, Divider, List } from '@chakra-ui/react';
 import './TrainingPage.css';
 import OneExercise from '../components/OneExercise';
 import AddExercisePopUp from '../components/AddExercisePopUp';
+import { TrainingContext } from '../context/TrainingContext';
+import { useNavigate } from 'react-router-dom';
 
 function TrainingPage() {
+    const { trainingData, addTraining } = useContext(TrainingContext);
+    const [trainingTemp, settrainingTemp] = useState({});
     const [exerciseForTraining, setexerciseForTraining] = useState([]);
     const addExerciseForTraining = (data) => {
         setexerciseForTraining([...exerciseForTraining, data]);
     };
+    const navigate = useNavigate();
     const deleteExerciseFromTraining = (id) => {
         setexerciseForTraining([...exerciseForTraining.filter((e) => e.id !== id)]);
+    };
+
+    const insertTrainingIntoFirebase = () => {
+        settrainingTemp({});
+        addTraining();
+        navigate('/');
     };
 
     return (

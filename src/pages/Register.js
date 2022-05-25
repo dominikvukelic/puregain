@@ -22,8 +22,6 @@ import {
     NumberDecrementStepper,
 } from '@chakra-ui/react';
 
-import './Register.css';
-
 export default function Register() {
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
@@ -42,7 +40,7 @@ export default function Register() {
     const handlePasswordVisibility = () => setShowPassword(!showPassword);
 
     return (
-        <Flex width="full" align="center" justifyContent="center">
+        <Flex width="full" align="center" justifyContent="center" paddingTop="60px" max>
             <Box padding={8} maxWidth="500px" borderWidth={1} borderRadius={8} boxShadow="lg">
                 {isLoggedIn ? (
                     <Box textAlign="center">
@@ -138,7 +136,7 @@ export default function Register() {
                                 </FormControl>
                                 <FormControl isRequired>
                                     <FormLabel>Age</FormLabel>
-                                    <NumberInput /* defaultValue={18} */ min={10} max={100}>
+                                    <NumberInput min={10} max={100}>
                                         <NumberInputField
                                             type="age"
                                             placeholder="age"
@@ -153,7 +151,7 @@ export default function Register() {
                                 </FormControl>
                                 <FormControl isRequired>
                                     <FormLabel>Height - in centimeters</FormLabel>
-                                    <NumberInput /* defaultValue={170} */ min={100} max={250}>
+                                    <NumberInput min={100} max={250}>
                                         <NumberInputField
                                             type="height"
                                             placeholder="height"
@@ -168,7 +166,7 @@ export default function Register() {
                                 </FormControl>
                                 <FormControl isRequired>
                                     <FormLabel>Weight - in kilos</FormLabel>
-                                    <NumberInput /* defaultValue={70} */ min={30} max={400}>
+                                    <NumberInput min={30} max={400}>
                                         <NumberInputField
                                             type="weight"
                                             placeholder="weight"
@@ -181,7 +179,7 @@ export default function Register() {
                                         </NumberInputStepper>
                                     </NumberInput>
                                 </FormControl>
-                                <Button className="register-btn" colorScheme="blue" type="submit" width="full" marginTop={4}>
+                                <Button className="register-btn" colorScheme="red" type="submit" width="full" marginTop={4}>
                                     {isLoading ? <CircularProgress isIndeterminate size="24px" color="teal" /> : 'Register'}
                                 </Button>
                                 <FormLabel>Already have an account? </FormLabel>

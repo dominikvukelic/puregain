@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import {
     Modal,
@@ -33,7 +33,9 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
 
     return (
         <>
-            <Button onClick={onOpen}>Add a new exercise</Button>
+            <Button onClick={onOpen} colorScheme="teal">
+                Add a new exercise
+            </Button>
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
@@ -74,10 +76,10 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button colorScheme="blue" onClick={handleAddExercise}>
+                        <Button colorScheme="teal" onClick={handleAddExercise}>
                             Confirm
                         </Button>
-                        <Button variant="ghost" mr={3} onClick={onClose}>
+                        <Button colorScheme="red" mr={3} onClick={onClose}>
                             Close
                         </Button>
                     </ModalFooter>

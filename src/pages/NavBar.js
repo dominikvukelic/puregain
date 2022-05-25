@@ -2,11 +2,12 @@ import React from 'react';
 import './NavBar.css';
 import MainMenu from './MainMenu';
 import ToggleColorMode from '../components/ToggleColorMode';
+import { Box } from '@chakra-ui/react';
 
 export default function NavBar() {
     return (
         <div>
-            <div className="navbar">
+            <Box className="navbar" bg="teal">
                 <div>
                     <a className="navbar-logo" href="/">
                         <img src="./images/logo.jpg" alt="app logo" className="img-fluid" />
@@ -21,7 +22,7 @@ export default function NavBar() {
                 <div className="main-menu">
                     <MainMenu />
                 </div>
-            </div>
+            </Box>
         </div>
     );
 }
