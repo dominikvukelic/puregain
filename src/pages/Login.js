@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { EyeIcon, EyeClosedIcon, LockIcon, MentionIcon } from '@primer/octicons-react';
 import {
     Flex,
@@ -13,16 +13,37 @@ import {
     InputGroup,
     InputRightElement,
     InputLeftAddon,
+    Alert,
+    AlertIcon,
+    AlertTitle,
+    AlertDescription,
 } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { TrainingContext } from '../context/TrainingContext';
+import { signInWithEmailAndPassword, getAuth } from 'firebase/auth';
 
 export default function Login() {
-    const [username, setUsername] = useState('');
+    const { trainingData, addUser } = useContext(TrainingContext);
+    const navigate = useNavigate();
+
+    const auth = getAuth();
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const [error, setError] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+
+    const handleLogin = async () => {
+        signInWithEmailAndPassword(auth, email, password)
+            .then(() => {
+                navigate('/');
+            })
+            .catch((error) => {
+                console.log(error.code);
+                setError(true);
+            });
+    };
 
     const handlePasswordVisibility = () => setShowPassword(!showPassword);
 
@@ -49,17 +70,17 @@ export default function Login() {
                             <Heading>Login</Heading>
                         </Box>
                         <Box marginY={4} textAlign="left">
-                            <form /* onSubmit={handleSubmit} */>
+                            <form>
                                 <FormControl isRequired>
-                                    <FormLabel>Username</FormLabel>
+                                    <FormLabel>Email</FormLabel>
                                     <InputGroup>
                                         <InputLeftAddon children={<MentionIcon />} style={{ height: '48px' }} />
                                         <Input
                                             style={{ height: '48px' }}
-                                            type="username"
-                                            placeholder="username"
+                                            type="email"
+                                            placeholder="email"
                                             size="lg"
-                                            onChange={(event) => setUsername(event.currentTarget.value)}
+                                            onChange={(event) => setEmail(event.currentTarget.value)}
                                         />
                                     </InputGroup>
                                 </FormControl>
@@ -81,7 +102,7 @@ export default function Login() {
                                         </InputRightElement>
                                     </InputGroup>
                                 </FormControl>
-                                <Button className="login-btn" colorScheme="teal" type="submit" width="full" marginTop={4}>
+                                <Button className="login-btn" colorScheme="teal" onClick={handleLogin} width="full" marginTop={4}>
                                     {isLoading ? <CircularProgress isIndeterminate size="24px" color="teal" /> : 'Login'}
                                 </Button>
                                 <FormLabel>Don't have an account? </FormLabel>
@@ -92,6 +113,13 @@ export default function Login() {
                                 </Link>
                             </form>
                         </Box>
+                        {error ? (
+                            <Alert status="error">
+                                <AlertIcon />
+                                <AlertTitle>Wrong Password or email!</AlertTitle>
+                                <AlertDescription>Try again.</AlertDescription>
+                            </Alert>
+                        ) : null}
                     </>
                 )}
             </Box>

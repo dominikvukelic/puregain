@@ -3,7 +3,7 @@ import { IconButton, Grid, GridItem, ListItem, Divider, Stack, Box } from '@chak
 import { TrashIcon, PencilIcon } from '@primer/octicons-react';
 import './OneExercise.css';
 
-function OneExercise({ exercisename, weight, reps, handleDelete, id }) {
+function OneExercise({ exercisename, weight, reps, handleDelete, id, handleEdit }) {
     return (
         <>
             <ListItem>
@@ -32,7 +32,7 @@ function OneExercise({ exercisename, weight, reps, handleDelete, id }) {
                                     aria-label="Edit"
                                     icon={<PencilIcon />}
                                     className="item-edit-btn"
-                                    onClick={() => handleDelete(id)}
+                                    onClick={() => handleEdit(id)}
                                 >
                                     Edit
                                 </IconButton>

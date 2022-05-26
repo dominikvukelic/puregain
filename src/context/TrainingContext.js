@@ -5,6 +5,14 @@ import database from '../FirebaseConfig';
 
 export const TrainingContext = createContext();
 
+export const addUser = async (data, direction, state, setState) => {
+    try {
+        await addDoc(collection(database, direction), { ...data });
+    } catch (e) {
+        console.error('Error adding data to the database: ', e);
+    }
+};
+
 const getExercisesDoneDuringTraining = async (idTreninga) => {
     let ExercisesDoneDuringTraining = [];
 
@@ -42,7 +50,7 @@ export function TrainingProvider({ children }) {
     }, []);
     console.log(trainingData);
     return (
-        <TrainingContext.Provider value={{ trainingData, addTraining, date, trainingNametemp, setDate, setTrainingNametemp }}>
+        <TrainingContext.Provider value={{ trainingData, addTraining, date, trainingNametemp, setDate, setTrainingNametemp, addUser }}>
             {children}
         </TrainingContext.Provider>
     );

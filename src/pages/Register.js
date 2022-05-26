@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { EyeIcon, EyeClosedIcon } from '@primer/octicons-react';
 import {
     Flex,
@@ -21,15 +21,22 @@ import {
     NumberIncrementStepper,
     NumberDecrementStepper,
 } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { TrainingContext } from '../context/TrainingContext';
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 
 export default function Register() {
+    const { trainingData, addUser } = useContext(TrainingContext);
+    const navigate = useNavigate();
+
+    const auth = getAuth();
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [gender, setGender] = React.useState('1');
+
+    const [gender, setGender] = React.useState('');
     const [age, setAge] = useState('');
     const [height, setHeight] = useState('');
     const [weight, setWeight] = useState('');
@@ -38,6 +45,27 @@ export default function Register() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
 
+    const handleRegister = async () => {
+        await createUserWithEmailAndPassword(auth, email, password)
+            .then(async () => {
+                const data = {
+                    age: age,
+                    email: email,
+                    gender: gender,
+                    height: height,
+                    weight: weight,
+                    name: name,
+                    surname: surname,
+                    username: username,
+                };
+                await addUser(data, 'users');
+                navigate('/login');
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
     const handlePasswordVisibility = () => setShowPassword(!showPassword);
 
     return (
@@ -45,7 +73,7 @@ export default function Register() {
             <Box padding={8} maxWidth="500px" borderWidth={1} borderRadius={8} boxShadow="lg">
                 {isLoggedIn ? (
                     <Box textAlign="center">
-                        <Text>You have successfully logged in!</Text>
+                        <Text>You have successfully registered!</Text>
                         <Button className="sign-out-btn" colorScheme="blue" width="full" marginTop={4} onClick={() => setIsLoggedIn(false)}>
                             Sign out
                         </Button>
@@ -56,7 +84,7 @@ export default function Register() {
                             <Heading>Register</Heading>
                         </Box>
                         <Box marginY={4} textAlign="left">
-                            <form /* onSubmit={handleSubmit} */>
+                            <form>
                                 <FormControl isRequired>
                                     <FormLabel>Name</FormLabel>
                                     <Input
@@ -109,35 +137,20 @@ export default function Register() {
                                         </InputRightElement>
                                     </InputGroup>
                                 </FormControl>
-                                <FormControl isRequired mt={6}>
-                                    <FormLabel>Repeat password</FormLabel>
-                                    <InputGroup>
-                                        <Input
-                                            type={showPassword ? 'text' : 'password'}
-                                            placeholder="*******"
-                                            size="lg"
-                                            onChange={(event) => setPassword(event.currentTarget.value)}
-                                        />
-                                        <InputRightElement width="3rem">
-                                            <Button height="1.5rem" size="sm" onClick={handlePasswordVisibility}>
-                                                {showPassword ? <EyeClosedIcon name="view-off" /> : <EyeIcon name="view" />}
-                                            </Button>
-                                        </InputRightElement>
-                                    </InputGroup>
-                                </FormControl>
+                                <FormControl isRequired mt={6}></FormControl>
                                 <FormControl isRequired>
                                     <FormLabel>Gender</FormLabel>
                                     <RadioGroup onChange={setGender} value={gender}>
                                         <Stack direction="column">
-                                            <Radio value="1">Male</Radio>
-                                            <Radio value="2">Female</Radio>
-                                            <Radio value="3">Other</Radio>
+                                            <Radio value="male">Male</Radio>
+                                            <Radio value="female">Female</Radio>
+                                            <Radio value="other">Other</Radio>
                                         </Stack>
                                     </RadioGroup>
                                 </FormControl>
                                 <FormControl isRequired>
                                     <FormLabel>Age</FormLabel>
-                                    <NumberInput min={10} max={100}>
+                                    <NumberInput>
                                         <NumberInputField
                                             type="age"
                                             placeholder="age"
@@ -152,7 +165,7 @@ export default function Register() {
                                 </FormControl>
                                 <FormControl isRequired>
                                     <FormLabel>Height - in centimeters</FormLabel>
-                                    <NumberInput min={100} max={250}>
+                                    <NumberInput>
                                         <NumberInputField
                                             type="height"
                                             placeholder="height"
@@ -167,7 +180,7 @@ export default function Register() {
                                 </FormControl>
                                 <FormControl isRequired>
                                     <FormLabel>Weight - in kilos</FormLabel>
-                                    <NumberInput min={30} max={400}>
+                                    <NumberInput>
                                         <NumberInputField
                                             type="weight"
                                             placeholder="weight"
@@ -180,7 +193,7 @@ export default function Register() {
                                         </NumberInputStepper>
                                     </NumberInput>
                                 </FormControl>
-                                <Button className="register-btn" colorScheme="red" type="submit" width="full" marginTop={4}>
+                                <Button className="register-btn" colorScheme="red" width="full" marginTop={4} onClick={handleRegister}>
                                     {isLoading ? <CircularProgress isIndeterminate size="24px" color="teal" /> : 'Register'}
                                 </Button>
                                 <FormLabel>Already have an account? </FormLabel>

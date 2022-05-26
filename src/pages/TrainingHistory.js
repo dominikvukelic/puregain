@@ -19,7 +19,7 @@ function TrainingHistory() {
                     {trainingData.map((t) => {
                         const date = t.date.toDate();
                         return (
-                            <Tr>
+                            <Tr key={t.id}>
                                 <Td>{`${t.trainingName}`}</Td>
                                 <Td>{`${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`}</Td>
                                 <Td>{`${t.liftedWeight}`}</Td>
