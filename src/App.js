@@ -28,6 +28,8 @@ export default function App() {
                         <Route exact path="/userinfo" element={<UserInfo />} />
                         <Route exact path="/traininghistory" element={<TrainingHistory />} />
                         <Route exact path="/listofexercises" element={<ListOfExercises />} />
+                        <Route exact path="/register" element={<Register />} />
+                        <Route exact path="/login" element={<Login />} />
                     </Routes>
                 </div>
 

@@ -7,7 +7,7 @@ function OneExercise({ exercisename, weight, reps, handleDelete, id }) {
     return (
         <>
             <ListItem>
-                <Grid templateColumns="repeat(5, 1fr)" gap={6} className="item">
+                <Grid templateColumns="repeat(5, 1fr)" gap={6} className="item" bg="teal">
                     <GridItem w="100%" h="30px">
                         <p>Exercise name</p>
                         <Divider orientation="horizontal" />

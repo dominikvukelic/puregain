@@ -79,7 +79,7 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
                         <Button colorScheme="teal" onClick={handleAddExercise}>
                             Confirm
                         </Button>
-                        <Button colorScheme="red" mr={3} onClick={onClose}>
+                        <Button colorScheme="red" ml={3} onClick={onClose}>
                             Close
                         </Button>
                     </ModalFooter>

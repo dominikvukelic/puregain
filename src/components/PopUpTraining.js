@@ -73,7 +73,7 @@ function PopUpTraining() {
                             {' '}
                             Confirm
                         </Button>
-                        <Button variant="ghost" mr={3} onClick={onClose}>
+                        <Button colorScheme="red" ml={3} onClick={onClose}>
                             Close
                         </Button>
                     </ModalFooter>

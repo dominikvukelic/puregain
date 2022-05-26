@@ -21,6 +21,7 @@ import {
     NumberIncrementStepper,
     NumberDecrementStepper,
 } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 
 export default function Register() {
     const [name, setName] = useState('');
@@ -183,9 +184,11 @@ export default function Register() {
                                     {isLoading ? <CircularProgress isIndeterminate size="24px" color="teal" /> : 'Register'}
                                 </Button>
                                 <FormLabel>Already have an account? </FormLabel>
-                                <Button className="login-btn" colorScheme="teal" variant="solid" type="submit" width="full" marginTop={4}>
-                                    Sign in
-                                </Button>
+                                <Link to="/login">
+                                    <Button colorScheme="teal" type="submit" width="full" marginTop={4}>
+                                        Login
+                                    </Button>
+                                </Link>
                             </form>
                         </Box>
                     </>

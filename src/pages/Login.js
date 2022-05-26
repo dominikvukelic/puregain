@@ -14,6 +14,7 @@ import {
     InputRightElement,
     InputLeftAddon,
 } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 
 export default function Login() {
     const [username, setUsername] = useState('');
@@ -80,20 +81,15 @@ export default function Login() {
                                         </InputRightElement>
                                     </InputGroup>
                                 </FormControl>
-                                <Button className="log-in-btn" colorScheme="teal" variant="solid" type="submit" width="full" marginTop={4}>
-                                    {isLoading ? <CircularProgress isIndeterminate size="24px" color="teal" /> : 'Sign In'}
+                                <Button className="login-btn" colorScheme="teal" type="submit" width="full" marginTop={4}>
+                                    {isLoading ? <CircularProgress isIndeterminate size="24px" color="teal" /> : 'Login'}
                                 </Button>
                                 <FormLabel>Don't have an account? </FormLabel>
-                                <Button
-                                    className="make-account-btn"
-                                    colorScheme="teal"
-                                    variant="solid"
-                                    type="submit"
-                                    width="full"
-                                    marginTop={4}
-                                >
-                                    Register
-                                </Button>
+                                <Link to="/register">
+                                    <Button colorScheme="red" type="submit" width="full" marginTop={4}>
+                                        Register
+                                    </Button>
+                                </Link>
                             </form>
                         </Box>
                     </>
