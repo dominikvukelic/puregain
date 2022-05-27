@@ -7,7 +7,7 @@ import { TrainingContext } from '../context/TrainingContext';
 import { useNavigate } from 'react-router-dom';
 
 function TrainingPage() {
-    const { trainingData, addTraining, trainingNametemp, date } = useContext(TrainingContext);
+    const { addTraining, trainingNametemp, date } = useContext(TrainingContext);
 
     const [exerciseForTraining, setexerciseForTraining] = useState([]);
     const [liftedWeight, setliftedWeight] = useState(0);

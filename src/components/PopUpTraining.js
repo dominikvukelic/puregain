@@ -26,7 +26,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 function PopUpTraining() {
-    const { addTraining, setDate, setTrainingNametemp } = useContext(TrainingContext);
+    const { setDate, setTrainingNametemp } = useContext(TrainingContext);
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [trainingName, setTrainingName] = useState('');
 

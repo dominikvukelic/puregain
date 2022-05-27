@@ -1,16 +1,6 @@
 import React from 'react';
 
-import {
-    Drawer,
-    /* DrawerBody, */
-    DrawerHeader,
-    DrawerOverlay,
-    DrawerContent,
-    DrawerCloseButton,
-    Button,
-    useDisclosure,
-    IconButton,
-} from '@chakra-ui/react';
+import { Drawer, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, Button, useDisclosure, IconButton } from '@chakra-ui/react';
 import { ThreeBarsIcon } from '@primer/octicons-react';
 import './MainMenu.css';
 import { useNavigate } from 'react-router-dom';
@@ -52,9 +42,6 @@ function MainMenu() {
                     <Button onClick={handleTrainingHistory}>Training History</Button>
                     <Button onClick={handleListOfExercises}>List of exercises</Button>
                     <Button onClick={handleLogOut}>Log Out</Button>
-                    {/* <DrawerBody>
-                        <Input placeholder="Type here..." />
-                    </DrawerBody> */}
                 </DrawerContent>
             </Drawer>
         </>
