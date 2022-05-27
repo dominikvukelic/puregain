@@ -4,8 +4,6 @@ import { ThemeProvider, theme, CSSReset } from '@chakra-ui/react';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import NavBar from './pages/NavBar';
-import MyCalendar from './pages/MyCalendar';
-import DatePicker from './components/DatePicker';
 
 import TrainingPage from './pages/TrainingPage';
 import { Routes, Route } from 'react-router-dom';
@@ -34,12 +32,6 @@ export default function App() {
                 </div>
 
                 <CSSReset />
-
-                {/* <Login />
-                <Register />
-                <DatePicker /> */}
-
-                {/*  <MyCalendar /> */}
             </ThemeProvider>
         </>
     );
