@@ -17,7 +17,7 @@ import {
 } from '@chakra-ui/react';
 /* import DatePickerComponent from './DatePicker'; */
 import { useNavigate } from 'react-router-dom';
-import TrainingPage from '../pages/TrainingPage';
+/* import TrainingPage from '../pages/TrainingPage'; */
 import { TrainingContext } from '../context/TrainingContext';
 import DatePicker from 'react-datepicker';
 
@@ -26,7 +26,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 function PopUpTraining() {
-    const { setDate, setTrainingNametemp } = useContext(TrainingContext);
+    const { setDate, setTrainingNametemp, setTrainingDurationtemp, trainingDurationtemp } = useContext(TrainingContext);
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [trainingName, setTrainingName] = useState('');
 
@@ -65,6 +65,17 @@ function PopUpTraining() {
                             </InputGroup>
                             <FormLabel>Time</FormLabel>
                             <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+                            <FormLabel>Training duration - in minutes</FormLabel>
+                            <InputGroup>
+                                <Input
+                                    style={{ height: '48px' }}
+                                    type="training-duration"
+                                    placeholder="training-duration"
+                                    size="lg"
+                                    value={trainingDurationtemp}
+                                    onChange={(event) => setTrainingDurationtemp(event.currentTarget.value)}
+                                />
+                            </InputGroup>
                         </Stack>
                     </ModalBody>
 

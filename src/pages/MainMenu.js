@@ -36,7 +36,7 @@ function MainMenu() {
                 <DrawerOverlay />
                 <DrawerContent>
                     <DrawerCloseButton />
-                    <DrawerHeader>User data</DrawerHeader>
+                    <DrawerHeader>Main Menu</DrawerHeader>
                     <Button onClick={handleReturnHome}>Home</Button>
                     <Button onClick={handleOpenUserInfo}>User Info</Button>
                     <Button onClick={handleTrainingHistory}>Training History</Button>

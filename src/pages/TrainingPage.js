@@ -7,10 +7,11 @@ import { TrainingContext } from '../context/TrainingContext';
 import { useNavigate } from 'react-router-dom';
 
 function TrainingPage() {
-    const { addTraining, trainingNametemp, date } = useContext(TrainingContext);
+    const { addTraining, trainingNametemp, date, trainingDurationtemp } = useContext(TrainingContext);
 
     const [exerciseForTraining, setexerciseForTraining] = useState([]);
     const [liftedWeight, setliftedWeight] = useState(0);
+    const [burnedCalories, setburnedCalories] = useState(0); //ovo mijenjat
 
     const addExerciseForTraining = (data) => {
         setexerciseForTraining([...exerciseForTraining, data]);
@@ -27,6 +28,9 @@ function TrainingPage() {
     useEffect(() => {
         setliftedWeight(exerciseForTraining.reduce((sum, t) => sum + t.weight * t.reps, 0));
     }, [exerciseForTraining]);
+    /* useEffect(() => {
+        setburnedCalories(exerciseForTraining.reduce((sum, t) => sum + t.trainingDuration * t.userWeight, 0));
+    }, [exerciseForTraining]); */
     const insertTrainingIntoFirebase = () => {
         const trainingTempdata = {
             burnedCalories: '',
@@ -36,6 +40,7 @@ function TrainingPage() {
             trainingName: trainingNametemp,
             userid: 1,
             exercisesInTraining: exerciseForTraining,
+            trainingDuration: trainingDurationtemp,
         };
 
         addTraining(trainingTempdata, 'trainings');
@@ -50,10 +55,12 @@ function TrainingPage() {
 
             <Grid templateColumns="repeat(2, 1fr)" gap={4}>
                 <GridItem colSpan={2}>
+                    <p>Date</p>
                     <h3>{`${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`}</h3>
                 </GridItem>
                 <GridItem colStart={4} colEnd={6}>
-                    <h3>Training duration</h3>
+                    <p>Training Duration</p>
+                    <h3>{trainingDurationtemp}</h3>
                 </GridItem>
             </Grid>
             <Divider orientation="horizontal" />

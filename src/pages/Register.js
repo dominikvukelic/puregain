@@ -37,7 +37,7 @@ export default function Register() {
     const [gender, setGender] = React.useState('');
     const [age, setAge] = useState('');
     const [height, setHeight] = useState('');
-    const [weight, setWeight] = useState('');
+    const [userWeight, setUserWeight] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
     const handleRegister = async () => {
@@ -48,7 +48,7 @@ export default function Register() {
                     email: email,
                     gender: gender,
                     height: height,
-                    weight: weight,
+                    userWeight: userWeight,
                     name: name,
                     surname: surname,
                     username: username,
@@ -165,9 +165,9 @@ export default function Register() {
                                 <NumberInput>
                                     <NumberInputField
                                         type="weight"
-                                        placeholder="weight"
+                                        placeholder="user weight"
                                         size="lg"
-                                        onChange={(event) => setWeight(event.currentTarget.value)}
+                                        onChange={(event) => setUserWeight(event.currentTarget.value)}
                                     />
                                     <NumberInputStepper>
                                         <NumberIncrementStepper />

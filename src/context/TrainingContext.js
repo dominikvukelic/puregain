@@ -45,12 +45,25 @@ export function TrainingProvider({ children }) {
     const [trainingData, setTrainingData] = useState([]);
     const [date, setDate] = useState(new Date());
     const [trainingNametemp, setTrainingNametemp] = useState('');
+    const [trainingDurationtemp, setTrainingDurationtemp] = useState('');
     useEffect(() => {
         getTraining('trainings', setTrainingData);
     }, []);
     console.log(trainingData);
     return (
-        <TrainingContext.Provider value={{ trainingData, addTraining, date, trainingNametemp, setDate, setTrainingNametemp, addUser }}>
+        <TrainingContext.Provider
+            value={{
+                trainingData,
+                addTraining,
+                date,
+                setDate,
+                trainingNametemp,
+                setTrainingNametemp,
+                addUser,
+                trainingDurationtemp,
+                setTrainingDurationtemp,
+            }}
+        >
             {children}
         </TrainingContext.Provider>
     );
