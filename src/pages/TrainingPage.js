@@ -29,7 +29,7 @@ function TrainingPage() {
         setliftedWeight(exerciseForTraining.reduce((sum, t) => sum + t.weight * t.reps, 0));
     }, [exerciseForTraining]);
     /* useEffect(() => {
-        setburnedCalories(exerciseForTraining.reduce((sum, t) => sum + t.trainingDuration * t.userWeight, 0));
+        setburnedCalories(exerciseForTraining.reduce((sum, t) => sum + t.trainingDuration * 6 * t.userWeight, 0));
     }, [exerciseForTraining]); */
     const insertTrainingIntoFirebase = () => {
         const trainingTempdata = {

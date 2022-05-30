@@ -14,6 +14,7 @@ import {
     Input,
     InputGroup,
     Stack,
+    FormControl,
 } from '@chakra-ui/react';
 /* import DatePickerComponent from './DatePicker'; */
 import { useNavigate } from 'react-router-dom';
@@ -52,30 +53,38 @@ function PopUpTraining() {
                     <ModalCloseButton />
                     <ModalBody>
                         <Stack spacing={1}>
-                            <FormLabel>Training name</FormLabel>
-                            <InputGroup>
-                                <Input
-                                    style={{ height: '48px' }}
-                                    type="training-name"
-                                    placeholder="training-name"
-                                    size="lg"
-                                    value={trainingName}
-                                    onChange={(event) => setTrainingName(event.currentTarget.value)}
-                                />
-                            </InputGroup>
-                            <FormLabel>Time</FormLabel>
-                            <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
-                            <FormLabel>Training duration - in minutes</FormLabel>
-                            <InputGroup>
-                                <Input
-                                    style={{ height: '48px' }}
-                                    type="training-duration"
-                                    placeholder="training-duration"
-                                    size="lg"
-                                    value={trainingDurationtemp}
-                                    onChange={(event) => setTrainingDurationtemp(event.currentTarget.value)}
-                                />
-                            </InputGroup>
+                            <form>
+                                <FormControl isRequired>
+                                    <FormLabel>Training name</FormLabel>
+                                    <InputGroup>
+                                        <Input
+                                            style={{ height: '48px' }}
+                                            type="training-name"
+                                            placeholder="training-name"
+                                            size="lg"
+                                            value={trainingName}
+                                            onChange={(event) => setTrainingName(event.currentTarget.value)}
+                                        />
+                                    </InputGroup>
+                                </FormControl>
+                                <FormControl isRequired>
+                                    <FormLabel>Time</FormLabel>
+                                    <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+                                </FormControl>
+                                <FormControl isRequired>
+                                    <FormLabel>Training duration - in minutes</FormLabel>
+                                    <InputGroup>
+                                        <Input
+                                            style={{ height: '48px' }}
+                                            type="training-duration"
+                                            placeholder="training-duration"
+                                            size="lg"
+                                            value={trainingDurationtemp}
+                                            onChange={(event) => setTrainingDurationtemp(event.currentTarget.value)}
+                                        />
+                                    </InputGroup>
+                                </FormControl>
+                            </form>
                         </Stack>
                     </ModalBody>
 
