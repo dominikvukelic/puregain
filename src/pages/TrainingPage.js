@@ -48,7 +48,7 @@ function TrainingPage() {
     };
 
     return (
-        <Box borderWidth="1px" borderRadius="lg" overflow="hidden">
+        <Box borderWidth="1px" borderRadius="lg" overflow="hidden" mr="20px" ml="20px">
             <Heading as="h4" className="trainingname">
                 {trainingNametemp}
             </Heading>

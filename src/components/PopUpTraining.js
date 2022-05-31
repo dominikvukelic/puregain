@@ -15,6 +15,8 @@ import {
     InputGroup,
     Stack,
     FormControl,
+    Flex,
+    Box,
 } from '@chakra-ui/react';
 /* import DatePickerComponent from './DatePicker'; */
 import { useNavigate } from 'react-router-dom';
@@ -42,9 +44,13 @@ function PopUpTraining() {
 
     return (
         <>
-            <Button onClick={onOpen} colorScheme="teal">
-                Make a new training plan
-            </Button>
+            <Flex width="full" align="center" justifyContent="center" paddingTop="60px" max>
+                <Box padding={8} maxWidth="1800px" borderWidth={1} borderRadius={8} boxShadow="lg">
+                    <Button onClick={onOpen} colorScheme="teal">
+                        Make a new training plan
+                    </Button>
+                </Box>
+            </Flex>
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
