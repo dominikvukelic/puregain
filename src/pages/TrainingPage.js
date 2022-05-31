@@ -59,12 +59,14 @@ function TrainingPage() {
                     <h3>{`${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`}</h3>
                 </GridItem>
                 <GridItem colStart={4} colEnd={6}>
-                    <p>Training Duration</p>
-                    <h3>{trainingDurationtemp}</h3>
+                    <Stack spacing={2}>
+                        <p>Training Duration</p>
+                        <h3>{trainingDurationtemp} minutes</h3>
+                    </Stack>
                 </GridItem>
             </Grid>
             <Divider orientation="horizontal" />
-            <List spacing={3}>
+            <List spacing={3} mr="5px" ml="5px">
                 {exerciseForTraining.map((e) => (
                     <OneExercise
                         exercisename={e.exerciseName}
@@ -82,8 +84,9 @@ function TrainingPage() {
                 <GridItem colStart={4} colEnd={6}>
                     <Stack spacing={2}>
                         <p>Total lifed weight</p>
-                        <h3>{liftedWeight}</h3>
-                        <h3>Burned Calories</h3>
+                        <h3>{liftedWeight} kilos</h3>
+                        <p>Burned Calories</p>
+                        <h3>{/* {burnedCalories} */} kcal</h3>
                         <Button colorScheme="teal" onClick={insertTrainingIntoFirebase}>
                             Finish training
                         </Button>

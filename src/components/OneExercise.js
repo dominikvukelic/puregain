@@ -33,6 +33,7 @@ function OneExercise({ exercisename, weight, reps, handleDelete, id, handleEdit 
                                     icon={<PencilIcon />}
                                     className="item-edit-btn"
                                     onClick={() => handleEdit(id)}
+                                    mb="5px"
                                 >
                                     Edit
                                 </IconButton>
@@ -45,6 +46,7 @@ function OneExercise({ exercisename, weight, reps, handleDelete, id, handleEdit 
                                     icon={<TrashIcon />}
                                     className="item-delete-btn"
                                     onClick={() => handleDelete(id)}
+                                    mb="5px"
                                 >
                                     Delete
                                 </IconButton>
