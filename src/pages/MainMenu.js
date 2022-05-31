@@ -37,11 +37,21 @@ function MainMenu() {
                 <DrawerContent>
                     <DrawerCloseButton />
                     <DrawerHeader>Main Menu</DrawerHeader>
-                    <Button onClick={handleReturnHome}>Home</Button>
-                    <Button onClick={handleOpenUserInfo}>User Info</Button>
-                    <Button onClick={handleTrainingHistory}>Training History</Button>
-                    <Button onClick={handleListOfExercises}>List of exercises</Button>
-                    <Button onClick={handleLogOut}>Log Out</Button>
+                    <Button colorScheme="teal" variant="outline" onClick={handleReturnHome}>
+                        Home
+                    </Button>
+                    <Button colorScheme="teal" variant="outline" onClick={handleOpenUserInfo}>
+                        User Info
+                    </Button>
+                    <Button colorScheme="teal" variant="outline" onClick={handleTrainingHistory}>
+                        Training History
+                    </Button>
+                    <Button colorScheme="teal" variant="outline" onClick={handleListOfExercises}>
+                        List of exercises
+                    </Button>
+                    <Button colorScheme="teal" variant="outline" onClick={handleLogOut}>
+                        Log Out
+                    </Button>
                 </DrawerContent>
             </Drawer>
         </>
