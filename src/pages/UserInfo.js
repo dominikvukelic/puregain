@@ -1,26 +1,38 @@
 import React, { useContext } from 'react';
 import { Stack, HStack, VStack, StackDivider, IconButton, Box, Flex } from '@chakra-ui/react';
 import { TrainingContext } from '../context/TrainingContext';
-import { TrashIcon } from '@primer/octicons-react';
+import { TrashIcon, PencilIcon } from '@primer/octicons-react';
 
-function UserInfo(handleDelete, id) {
+function UserInfo(handleDelete, id /* handleEdit napravit novi */) {
     const { trainingData } = useContext(TrainingContext);
     return (
-        <Flex width="full" align="center" justifyContent="center" paddingTop="60px" max>
-            <Box padding={8} maxWidth="1800px" borderWidth={1} borderRadius={8} boxShadow="lg">
-                <>
-                    <Stack divider={<StackDivider borderColor="gray.400" />} spacing={4} align="stretch">
-                        <Box>Name</Box>
-                        <Box>Surname</Box>
-                        <Box>Username </Box>
-                        <Box>Email</Box>
-                        <Box>Gender</Box>
-                        <Box>Age</Box>
-                        <Box>Height</Box>
-                        <Box>Weight</Box>
-                        <Box>Delete</Box>
+        <Box padding={8} maxWidth="1800px" borderWidth={1} borderRadius={8} boxShadow="lg">
+            <Box>
+                <Stack divider={<StackDivider borderColor="gray.400" />} spacing={4} align="stretch">
+                    <Box>
+                        <p className="button-text">Edit user data</p>
+                        <IconButton
+                            aria-label="Edit user data"
+                            icon={<PencilIcon />}
+                            className="item-edit-btn"
+                            /* onClick={() => handleEdit(id)} */
+                            mb="5px"
+                        >
+                            Edit user data
+                        </IconButton>
+                    </Box>
 
-                        {/*  <Stack>
+                    <Box>Name</Box>
+                    <Box>Surname</Box>
+                    <Box>Username </Box>
+                    <Box>Email</Box>
+                    <Box>Gender</Box>
+                    <Box>Age</Box>
+                    <Box>Height</Box>
+                    <Box>Weight</Box>
+                    <Box>Delete</Box>
+
+                    {/*  <Stack>
                     {trainingData.map((t) => {
                         
                         return (
@@ -47,10 +59,9 @@ function UserInfo(handleDelete, id) {
                         );
                     })}
                 </Stack> */}
-                    </Stack>
-                </>
+                </Stack>
             </Box>
-        </Flex>
+        </Box>
     );
 }
 

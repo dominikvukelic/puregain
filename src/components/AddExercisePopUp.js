@@ -13,6 +13,11 @@ import {
     FormLabel,
     Input,
     Stack,
+    NumberInput,
+    NumberInputField,
+    NumberIncrementStepper,
+    NumberInputStepper,
+    NumberDecrementStepper,
 } from '@chakra-ui/react';
 import { nanoid } from 'nanoid';
 
@@ -45,7 +50,6 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
                     <ModalBody>
                         <Stack direction={['column']} spacing={1}>
                             <FormLabel>Exercise name</FormLabel>
-
                             <Input
                                 style={{ height: '48px' }}
                                 type="exercise-name"
@@ -54,24 +58,37 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
                                 value={exerciseName}
                                 onChange={(event) => setexerciseName(event.currentTarget.value)}
                             />
+
                             <FormLabel>Weight </FormLabel>
-                            <Input
-                                style={{ height: '48px' }}
-                                type="weight"
-                                placeholder="weight"
-                                size="lg"
-                                value={weight}
-                                onChange={(event) => setWeight(event.currentTarget.value)}
-                            />
+                            <NumberInput>
+                                <NumberInputField
+                                    style={{ height: '48px' }}
+                                    type="weight"
+                                    placeholder="weight"
+                                    size="lg"
+                                    value={weight}
+                                    onChange={(event) => setWeight(event.currentTarget.value)}
+                                />
+                                <NumberInputStepper>
+                                    <NumberIncrementStepper />
+                                    <NumberDecrementStepper />
+                                </NumberInputStepper>
+                            </NumberInput>
                             <FormLabel>Reps </FormLabel>
-                            <Input
-                                style={{ height: '48px' }}
-                                type="reps"
-                                placeholder="reps"
-                                size="lg"
-                                value={reps}
-                                onChange={(event) => setReps(event.currentTarget.value)}
-                            />
+                            <NumberInput>
+                                <NumberInputField
+                                    style={{ height: '48px' }}
+                                    type="reps"
+                                    placeholder="reps"
+                                    size="lg"
+                                    value={reps}
+                                    onChange={(event) => setReps(event.currentTarget.value)}
+                                />
+                                <NumberInputStepper>
+                                    <NumberIncrementStepper />
+                                    <NumberDecrementStepper />
+                                </NumberInputStepper>
+                            </NumberInput>
                         </Stack>
                     </ModalBody>
 
