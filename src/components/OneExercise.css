@@ -7,3 +7,11 @@
     background-color: white;
     color: black;
 }
+
+.icons-container {
+    display: inline-block;
+}
+.button-text {
+    display: flex;
+    flex-wrap: nowrap;
+}

@@ -44,7 +44,7 @@ function PopUpTraining() {
 
     return (
         <>
-            <Flex width="full" align="center" justifyContent="center" paddingTop="60px" max>
+            <Flex width="full" align="center" justifyContent="center" paddingTop="60px">
                 <Box padding={8} maxWidth="1800px" borderWidth={1} borderRadius={8} boxShadow="lg">
                     <Button onClick={onOpen} colorScheme="teal">
                         Make a new training plan

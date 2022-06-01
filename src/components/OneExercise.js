@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconButton, Grid, GridItem, ListItem, Divider, Stack, Box } from '@chakra-ui/react';
+import { IconButton, Grid, GridItem, ListItem, Divider, Stack, Box, Flex, HStack } from '@chakra-ui/react';
 import { TrashIcon, PencilIcon } from '@primer/octicons-react';
 import './OneExercise.css';
 
@@ -25,9 +25,9 @@ function OneExercise({ exercisename, weight, reps, handleDelete, id, handleEdit 
                     </GridItem>
 
                     <GridItem w="20%">
-                        <Stack direction={['column', 'row']} spacing="18px">
+                        <HStack spacing="10px">
                             <Box>
-                                <p>Edit</p>
+                                <p className="button-text">Edit</p>
                                 <IconButton
                                     aria-label="Edit"
                                     icon={<PencilIcon />}
@@ -38,20 +38,22 @@ function OneExercise({ exercisename, weight, reps, handleDelete, id, handleEdit 
                                     Edit
                                 </IconButton>
                             </Box>
-                            <Box>
-                                <p>Delete</p>
+                            <Flex>
+                                <Box>
+                                    <p className="button-text">Delete</p>
 
-                                <IconButton
-                                    aria-label="Delete"
-                                    icon={<TrashIcon />}
-                                    className="item-delete-btn"
-                                    onClick={() => handleDelete(id)}
-                                    mb="5px"
-                                >
-                                    Delete
-                                </IconButton>
-                            </Box>
-                        </Stack>
+                                    <IconButton
+                                        aria-label="Delete"
+                                        icon={<TrashIcon />}
+                                        className="item-delete-btn"
+                                        onClick={() => handleDelete(id)}
+                                        mb="5px"
+                                    >
+                                        Delete
+                                    </IconButton>
+                                </Box>
+                            </Flex>
+                        </HStack>
                     </GridItem>
                 </Grid>
             </ListItem>

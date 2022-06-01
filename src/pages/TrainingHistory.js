@@ -6,7 +6,7 @@ import { TrashIcon } from '@primer/octicons-react';
 function TrainingHistory(handleDelete, id) {
     const { trainingData } = useContext(TrainingContext);
     return (
-        <Flex width="full" align="center" justifyContent="center" paddingTop="60px" max>
+        <Flex width="full" align="center" justifyContent="center" paddingTop="60px" mr="5px" ml="5px">
             <Box padding={8} maxWidth="1800px" borderWidth={1} borderRadius={8} boxShadow="lg">
                 <>
                     <TableContainer>
