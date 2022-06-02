@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconButton, Grid, GridItem, ListItem, Divider, Stack, Box, Flex, HStack } from '@chakra-ui/react';
+import { IconButton, Grid, GridItem, ListItem, Divider, Box, Flex, HStack } from '@chakra-ui/react';
 import { TrashIcon, PencilIcon } from '@primer/octicons-react';
 import './OneExercise.css';
 
