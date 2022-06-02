@@ -17,6 +17,11 @@ import {
     FormControl,
     Flex,
     Box,
+    NumberInput,
+    NumberInputField,
+    NumberIncrementStepper,
+    NumberInputStepper,
+    NumberDecrementStepper,
 } from '@chakra-ui/react';
 /* import DatePickerComponent from './DatePicker'; */
 import { useNavigate } from 'react-router-dom';
@@ -80,14 +85,20 @@ function PopUpTraining() {
                                 <FormControl isRequired>
                                     <FormLabel>Training duration - in minutes</FormLabel>
                                     <InputGroup>
-                                        <Input
-                                            style={{ height: '48px' }}
-                                            type="training-duration"
-                                            placeholder="training-duration"
-                                            size="lg"
-                                            value={trainingDurationtemp}
-                                            onChange={(event) => setTrainingDurationtemp(event.currentTarget.value)}
-                                        />
+                                        <NumberInput>
+                                            <NumberInputField
+                                                style={{ height: '48px' }}
+                                                type="training-duration"
+                                                placeholder="training-duration"
+                                                size="lg"
+                                                value={trainingDurationtemp}
+                                                onChange={(event) => setTrainingDurationtemp(event.currentTarget.value)}
+                                            />
+                                            <NumberInputStepper>
+                                                <NumberIncrementStepper />
+                                                <NumberDecrementStepper />
+                                            </NumberInputStepper>
+                                        </NumberInput>
                                     </InputGroup>
                                 </FormControl>
                             </form>

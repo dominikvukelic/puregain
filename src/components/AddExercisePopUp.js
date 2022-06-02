@@ -45,7 +45,7 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader>Add a new training plan</ModalHeader>
+                    <ModalHeader>Add a new exercise</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
                         <Stack direction={['column']} spacing={1}>

@@ -74,7 +74,12 @@ export default function Register() {
                         <form>
                             <FormControl isRequired>
                                 <FormLabel>Name</FormLabel>
-                                <Input type="name" placeholder="name" size="lg" onChange={(event) => setName(event.currentTarget.value)} />
+                                <Input
+                                    type="name"
+                                    placeholder="name"
+                                    size="lg"
+                                    onChange={(event) => setName(event.currentTarget.value.replace(/[^a-z]/gi, ''))}
+                                />
                             </FormControl>
                             <FormControl isRequired>
                                 <FormLabel>Surname</FormLabel>
@@ -82,7 +87,7 @@ export default function Register() {
                                     type="surname"
                                     placeholder="surname"
                                     size="lg"
-                                    onChange={(event) => setSurname(event.currentTarget.value)}
+                                    onChange={(event) => setSurname(event.currentTarget.value.replace(/[^a-z]/gi, ''))}
                                 />
                             </FormControl>
                             <FormControl isRequired>
