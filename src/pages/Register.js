@@ -18,6 +18,7 @@ import {
     NumberInputStepper,
     NumberIncrementStepper,
     NumberDecrementStepper,
+    FormErrorMessage,
 } from '@chakra-ui/react';
 import { Link, useNavigate } from 'react-router-dom';
 import { TrainingContext } from '../context/TrainingContext';
@@ -72,7 +73,7 @@ export default function Register() {
                     </Box>
                     <Box marginY={4} textAlign="left">
                         <form>
-                            <FormControl isRequired>
+                            <FormControl isRequired isInvalid={name === ''}>
                                 <FormLabel>Name</FormLabel>
                                 <Input
                                     type="name"
@@ -80,8 +81,9 @@ export default function Register() {
                                     size="lg"
                                     onChange={(event) => setName(event.currentTarget.value.replace(/[^a-z]/gi, ''))}
                                 />
+                                {name === '' ? <FormErrorMessage>Name is required.</FormErrorMessage> : ''}
                             </FormControl>
-                            <FormControl isRequired>
+                            <FormControl isRequired isInvalid="Enter data into field">
                                 <FormLabel>Surname</FormLabel>
                                 <Input
                                     type="surname"
@@ -90,7 +92,7 @@ export default function Register() {
                                     onChange={(event) => setSurname(event.currentTarget.value.replace(/[^a-z]/gi, ''))}
                                 />
                             </FormControl>
-                            <FormControl isRequired>
+                            <FormControl isRequired isInvalid="Enter data into field">
                                 <FormLabel>Username</FormLabel>
                                 <Input
                                     type="username"
@@ -99,7 +101,7 @@ export default function Register() {
                                     onChange={(event) => setUsername(event.currentTarget.value)}
                                 />
                             </FormControl>
-                            <FormControl isRequired>
+                            <FormControl isRequired isInvalid="Enter data into field">
                                 <FormLabel>Email</FormLabel>
                                 <Input
                                     type="email"
@@ -108,7 +110,7 @@ export default function Register() {
                                     onChange={(event) => setEmail(event.currentTarget.value)}
                                 />
                             </FormControl>
-                            <FormControl isRequired mt={6}>
+                            <FormControl isRequired mt={6} isInvalid="Enter data into field">
                                 <FormLabel>Password</FormLabel>
                                 <InputGroup>
                                     <Input
@@ -124,8 +126,7 @@ export default function Register() {
                                     </InputRightElement>
                                 </InputGroup>
                             </FormControl>
-                            <FormControl isRequired mt={6}></FormControl>
-                            <FormControl isRequired>
+                            <FormControl isRequired mt={6} isInvalid="Enter data into field">
                                 <FormLabel>Gender</FormLabel>
                                 <RadioGroup onChange={setGender} value={gender}>
                                     <Stack direction="column">
@@ -135,7 +136,7 @@ export default function Register() {
                                     </Stack>
                                 </RadioGroup>
                             </FormControl>
-                            <FormControl isRequired>
+                            <FormControl isRequired isInvalid="Enter data into field">
                                 <FormLabel>Age</FormLabel>
                                 <NumberInput>
                                     <NumberInputField
@@ -150,7 +151,7 @@ export default function Register() {
                                     </NumberInputStepper>
                                 </NumberInput>
                             </FormControl>
-                            <FormControl isRequired>
+                            <FormControl isRequired isInvalid="Enter data into field">
                                 <FormLabel>Height - in centimeters</FormLabel>
                                 <NumberInput>
                                     <NumberInputField
@@ -165,7 +166,7 @@ export default function Register() {
                                     </NumberInputStepper>
                                 </NumberInput>
                             </FormControl>
-                            <FormControl isRequired>
+                            <FormControl isRequired isInvalid="Enter data into field">
                                 <FormLabel>Weight - in kilos</FormLabel>
                                 <NumberInput>
                                     <NumberInputField

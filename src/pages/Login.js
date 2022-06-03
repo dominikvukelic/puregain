@@ -52,7 +52,7 @@ export default function Login() {
                     </Box>
                     <Box marginY={4} textAlign="left">
                         <form>
-                            <FormControl isRequired>
+                            <FormControl isRequired isInvalid="Enter data into field">
                                 <FormLabel>Email</FormLabel>
                                 <InputGroup>
                                     <InputLeftAddon children={<MentionIcon />} style={{ height: '48px' }} />
@@ -65,7 +65,7 @@ export default function Login() {
                                     />
                                 </InputGroup>
                             </FormControl>
-                            <FormControl isRequired mt={6}>
+                            <FormControl isRequired mt={6} isInvalid="Enter data into field">
                                 <FormLabel>Password</FormLabel>
                                 <InputGroup>
                                     <InputLeftAddon children={<LockIcon />} style={{ height: '48px' }} />

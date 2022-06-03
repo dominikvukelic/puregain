@@ -4,8 +4,11 @@ import { Drawer, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, 
 import { ThreeBarsIcon } from '@primer/octicons-react';
 import './MainMenu.css';
 import { useNavigate } from 'react-router-dom';
+import { TrainingContext } from '../context/TrainingContext';
+import { getAuth } from 'firebase/auth';
 
 function MainMenu() {
+    const auth = getAuth();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = React.useRef();
     const navigate = useNavigate();
@@ -17,15 +20,18 @@ function MainMenu() {
         navigate('/traininghistory');
         onClose();
     };
-    const handleListOfExercises = () => {
-        navigate('/listofexercises');
-        onClose();
-    };
+
     const handleReturnHome = () => {
         navigate('/');
         onClose();
     };
     const handleLogOut = () => {
+        auth.signOut();
+        navigate('/login');
+        onClose();
+    };
+
+    const handleLogIn = () => {
         navigate('/login');
         onClose();
     };
@@ -46,12 +52,16 @@ function MainMenu() {
                     <Button colorScheme="teal" variant="outline" onClick={handleTrainingHistory}>
                         Training History
                     </Button>
-                    <Button colorScheme="teal" variant="outline" onClick={handleListOfExercises}>
-                        List of exercises
-                    </Button>
-                    <Button colorScheme="teal" variant="outline" onClick={handleLogOut}>
-                        Log Out
-                    </Button>
+
+                    {auth.currentUser ? (
+                        <Button colorScheme="teal" variant="outline" onClick={handleLogOut}>
+                            Log Out
+                        </Button>
+                    ) : (
+                        <Button colorScheme="teal" variant="outline" onClick={handleLogIn}>
+                            Login
+                        </Button>
+                    )}
                 </DrawerContent>
             </Drawer>
         </>

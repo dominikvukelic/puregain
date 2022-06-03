@@ -12,8 +12,11 @@ import './App.css';
 import UserInfo from './pages/UserInfo';
 import TrainingHistory from './pages/TrainingHistory';
 import ListOfExercises from './pages/ListOfExercises';
+import { getAuth } from 'firebase/auth';
 
 export default function App() {
+    const auth = getAuth();
+    console.log(auth.currentUser);
     return (
         <>
             <ThemeProvider theme={theme}>
