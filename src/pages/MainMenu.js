@@ -4,7 +4,6 @@ import { Drawer, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, 
 import { ThreeBarsIcon } from '@primer/octicons-react';
 import './MainMenu.css';
 import { useNavigate } from 'react-router-dom';
-import { TrainingContext } from '../context/TrainingContext';
 import { getAuth } from 'firebase/auth';
 
 function MainMenu() {

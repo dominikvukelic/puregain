@@ -11,7 +11,6 @@ import PopUpTraining from './components/PopUpTraining';
 import './App.css';
 import UserInfo from './pages/UserInfo';
 import TrainingHistory from './pages/TrainingHistory';
-import ListOfExercises from './pages/ListOfExercises';
 import { getAuth } from 'firebase/auth';
 
 export default function App() {
@@ -28,7 +27,6 @@ export default function App() {
                         <Route exact path="/trainingpage" element={<TrainingPage />} />
                         <Route exact path="/userinfo" element={<UserInfo />} />
                         <Route exact path="/traininghistory" element={<TrainingHistory />} />
-                        <Route exact path="/listofexercises" element={<ListOfExercises />} />
                         <Route exact path="/register" element={<Register />} />
                         <Route exact path="/login" element={<Login />} />
                     </Routes>

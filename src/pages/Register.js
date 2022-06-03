@@ -91,8 +91,9 @@ export default function Register() {
                                     size="lg"
                                     onChange={(event) => setSurname(event.currentTarget.value.replace(/[^a-z]/gi, ''))}
                                 />
+                                {surname === '' ? <FormErrorMessage>Surame is required.</FormErrorMessage> : ''}
                             </FormControl>
-                            <FormControl isRequired isInvalid="Enter data into field">
+                            <FormControl isRequired isInvalid={username === ''}>
                                 <FormLabel>Username</FormLabel>
                                 <Input
                                     type="username"
@@ -100,8 +101,9 @@ export default function Register() {
                                     size="lg"
                                     onChange={(event) => setUsername(event.currentTarget.value)}
                                 />
+                                {username === '' ? <FormErrorMessage>Username is required.</FormErrorMessage> : ''}
                             </FormControl>
-                            <FormControl isRequired isInvalid="Enter data into field">
+                            <FormControl isRequired isInvalid={email === ''}>
                                 <FormLabel>Email</FormLabel>
                                 <Input
                                     type="email"
@@ -109,8 +111,9 @@ export default function Register() {
                                     size="lg"
                                     onChange={(event) => setEmail(event.currentTarget.value)}
                                 />
+                                {email === '' ? <FormErrorMessage>Email is required.</FormErrorMessage> : ''}
                             </FormControl>
-                            <FormControl isRequired mt={6} isInvalid="Enter data into field">
+                            <FormControl isRequired mt={6} isInvalid={password === ''}>
                                 <FormLabel>Password</FormLabel>
                                 <InputGroup>
                                     <Input
@@ -119,14 +122,16 @@ export default function Register() {
                                         size="lg"
                                         onChange={(event) => setPassword(event.currentTarget.value)}
                                     />
+
                                     <InputRightElement width="3rem">
                                         <Button height="1.5rem" size="sm" onClick={handlePasswordVisibility}>
                                             {showPassword ? <EyeClosedIcon name="view-off" /> : <EyeIcon name="view" />}
                                         </Button>
                                     </InputRightElement>
                                 </InputGroup>
+                                {password === '' ? <FormErrorMessage>Password is required.</FormErrorMessage> : ''}
                             </FormControl>
-                            <FormControl isRequired mt={6} isInvalid="Enter data into field">
+                            <FormControl isRequired mt={6} isInvalid={gender === ''}>
                                 <FormLabel>Gender</FormLabel>
                                 <RadioGroup onChange={setGender} value={gender}>
                                     <Stack direction="column">
@@ -136,7 +141,7 @@ export default function Register() {
                                     </Stack>
                                 </RadioGroup>
                             </FormControl>
-                            <FormControl isRequired isInvalid="Enter data into field">
+                            <FormControl isRequired isInvalid={age === ''}>
                                 <FormLabel>Age</FormLabel>
                                 <NumberInput>
                                     <NumberInputField
@@ -145,13 +150,14 @@ export default function Register() {
                                         size="lg"
                                         onChange={(event) => setAge(event.currentTarget.value)}
                                     />
+                                    {age === '' ? <FormErrorMessage>Age is required.</FormErrorMessage> : ''}
                                     <NumberInputStepper>
                                         <NumberIncrementStepper />
                                         <NumberDecrementStepper />
                                     </NumberInputStepper>
                                 </NumberInput>
                             </FormControl>
-                            <FormControl isRequired isInvalid="Enter data into field">
+                            <FormControl isRequired isInvalid={height === ''}>
                                 <FormLabel>Height - in centimeters</FormLabel>
                                 <NumberInput>
                                     <NumberInputField
@@ -160,13 +166,14 @@ export default function Register() {
                                         size="lg"
                                         onChange={(event) => setHeight(event.currentTarget.value)}
                                     />
+                                    {height === '' ? <FormErrorMessage>Height is required.</FormErrorMessage> : ''}
                                     <NumberInputStepper>
                                         <NumberIncrementStepper />
                                         <NumberDecrementStepper />
                                     </NumberInputStepper>
                                 </NumberInput>
                             </FormControl>
-                            <FormControl isRequired isInvalid="Enter data into field">
+                            <FormControl isRequired isInvalid={userWeight === ''}>
                                 <FormLabel>Weight - in kilos</FormLabel>
                                 <NumberInput>
                                     <NumberInputField
@@ -175,6 +182,7 @@ export default function Register() {
                                         size="lg"
                                         onChange={(event) => setUserWeight(event.currentTarget.value)}
                                     />
+                                    {userWeight === '' ? <FormErrorMessage>User weight is required.</FormErrorMessage> : ''}
                                     <NumberInputStepper>
                                         <NumberIncrementStepper />
                                         <NumberDecrementStepper />
