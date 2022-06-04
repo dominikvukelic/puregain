@@ -137,7 +137,6 @@ export default function Register() {
                                     <Stack direction="column">
                                         <Radio value="male">Male</Radio>
                                         <Radio value="female">Female</Radio>
-                                        <Radio value="other">Other</Radio>
                                     </Stack>
                                 </RadioGroup>
                             </FormControl>
