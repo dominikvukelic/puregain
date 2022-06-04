@@ -56,51 +56,53 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
                         <ModalCloseButton />
                         <ModalBody>
                             <Stack direction={['column']} spacing={1}>
-                                <FormControl isRequired isInvalid={exerciseName === ''}>
-                                    <FormLabel>Exercise name</FormLabel>
-                                    <Input
-                                        style={{ height: '48px' }}
-                                        type="exercise-name"
-                                        placeholder="exercise-name"
-                                        size="lg"
-                                        value={exerciseName}
-                                        onChange={(event) => setexerciseName(event.currentTarget.value)}
-                                    />
-                                </FormControl>
-                                <FormControl isRequired isInvalid={weight === ''}>
-                                    <FormLabel>Weight </FormLabel>
-                                    <NumberInput>
-                                        <NumberInputField
+                                <form /* onSubmit={handleAddExercise} id="addexercisepopup" */>
+                                    <FormControl isRequired isInvalid={exerciseName === ''}>
+                                        <FormLabel>Exercise name</FormLabel>
+                                        <Input
                                             style={{ height: '48px' }}
-                                            type="weight"
-                                            placeholder="weight"
+                                            type="exercise-name"
+                                            placeholder="exercise-name"
                                             size="lg"
-                                            value={weight}
-                                            onChange={(event) => setWeight(event.currentTarget.value)}
+                                            value={exerciseName}
+                                            onChange={(event) => setexerciseName(event.currentTarget.value)}
                                         />
-                                        <NumberInputStepper>
-                                            <NumberIncrementStepper />
-                                            <NumberDecrementStepper />
-                                        </NumberInputStepper>
-                                    </NumberInput>
-                                </FormControl>
-                                <FormControl isRequired isInvalid={reps === ''}>
-                                    <FormLabel>Reps </FormLabel>
-                                    <NumberInput>
-                                        <NumberInputField
-                                            style={{ height: '48px' }}
-                                            type="reps"
-                                            placeholder="reps"
-                                            size="lg"
-                                            value={reps}
-                                            onChange={(event) => setReps(event.currentTarget.value)}
-                                        />
-                                        <NumberInputStepper>
-                                            <NumberIncrementStepper />
-                                            <NumberDecrementStepper />
-                                        </NumberInputStepper>
-                                    </NumberInput>
-                                </FormControl>
+                                    </FormControl>
+                                    <FormControl isRequired isInvalid={weight === ''}>
+                                        <FormLabel>Weight </FormLabel>
+                                        <NumberInput>
+                                            <NumberInputField
+                                                style={{ height: '48px' }}
+                                                type="weight"
+                                                placeholder="weight"
+                                                size="lg"
+                                                value={weight}
+                                                onChange={(event) => setWeight(event.currentTarget.value)}
+                                            />
+                                            <NumberInputStepper>
+                                                <NumberIncrementStepper />
+                                                <NumberDecrementStepper />
+                                            </NumberInputStepper>
+                                        </NumberInput>
+                                    </FormControl>
+                                    <FormControl isRequired isInvalid={reps === ''}>
+                                        <FormLabel>Reps </FormLabel>
+                                        <NumberInput>
+                                            <NumberInputField
+                                                style={{ height: '48px' }}
+                                                type="reps"
+                                                placeholder="reps"
+                                                size="lg"
+                                                value={reps}
+                                                onChange={(event) => setReps(event.currentTarget.value)}
+                                            />
+                                            <NumberInputStepper>
+                                                <NumberIncrementStepper />
+                                                <NumberDecrementStepper />
+                                            </NumberInputStepper>
+                                        </NumberInput>
+                                    </FormControl>
+                                </form>
                             </Stack>
                         </ModalBody>
 

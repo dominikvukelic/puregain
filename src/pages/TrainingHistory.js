@@ -14,11 +14,11 @@ function TrainingHistory(handleDelete, id) {
         navigate('/login');
     } else {
         return (
-            <Flex width="full" align="center" justifyContent="center" paddingTop="60px" mr="5px" ml="5px">
-                <Box padding={8} maxWidth="1800px" borderWidth={1} borderRadius={8} boxShadow="lg">
+            <Flex width="full" align="center" justifyContent="center" paddingTop="60px" mr="5px" ml="5px" maxWidth="1200px">
+                <Box borderWidth={1} borderRadius={8} boxShadow="lg">
                     <>
                         <TableContainer>
-                            <Table variant="simple">
+                            <Table variant="striped" colorScheme="telegram">
                                 <Thead>
                                     <Tr>
                                         <Th>Training name</Th>

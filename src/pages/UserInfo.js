@@ -1,10 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Stack, StackDivider, IconButton, Box } from '@chakra-ui/react';
+import { Stack, StackDivider, IconButton, Box, Heading } from '@chakra-ui/react';
 import { TrainingContext } from '../context/TrainingContext';
 import { PencilIcon } from '@primer/octicons-react';
 import { getAuth } from 'firebase/auth';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import database from '../FirebaseConfig';
+import { PieChart } from 'react-minimal-pie-chart';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -15,6 +16,7 @@ function UserInfo(/* handleEdit napravit novi */) {
     const email = auth.currentUser.email;
     const [userData, setuserData] = useState('');
 
+    //exportat
     const getUserInfo = async () => {
         try {
             const first = query(collection(database, 'users'), where('email', '==', email));
@@ -25,6 +27,7 @@ function UserInfo(/* handleEdit napravit novi */) {
             console.log(e);
         }
     };
+
     useEffect(() => {
         getUserInfo();
     }, []);
@@ -33,7 +36,7 @@ function UserInfo(/* handleEdit napravit novi */) {
         navigate('/login');
     } else {
         return (
-            <Box padding={8} maxWidth="1800px" borderWidth={1} borderRadius={8} boxShadow="lg">
+            <Box padding={8} maxWidth="500px" borderWidth={1} borderRadius={8} boxShadow="lg">
                 <Box>
                     <Stack divider={<StackDivider borderColor="gray.400" />} spacing={4} align="stretch">
                         <Box>
@@ -57,26 +60,26 @@ function UserInfo(/* handleEdit napravit novi */) {
                         <Box>Age: {userData.age}</Box>
                         <Box>Height: {userData.height}</Box>
                         <Box>Weight: {userData.userWeight}</Box>
-
-                        {/*  <Stack>
-                    {trainingData.map((t) => {
-                        
-                        return (
-                            
-                                <Box>{`${t.name}`}</Box>
-                                <Box>{`${t.surname}`}</Box>
-                                <Box>{`${t.username}`}</Box>
-                                <Box>{`${t.email}`}</Box>
-                                <Box>{`${t.gender}`}</Box>
-                                <Box>{`${t.age}`}</Box>
-                                <Box>{`${t.height}`}</Box>
-                                <Box>{`${t.weight}`}</Box>
-                               
-                            
-                        );
-                    })}
-                </Stack> */}
                     </Stack>
+                </Box>
+                <Box padding={8} borderWidth={1} borderRadius={8} boxShadow="lg" maxWidth="500px">
+                    <p>BMI data</p>
+                    <Heading as="h3" size="lg">
+                        {/* {message}
+                        {optimalweight}
+                        {bmi} */}
+                    </Heading>
+                </Box>
+
+                <Box padding={8} borderWidth={1} borderRadius={8} boxShadow="lg" maxWidth="500px">
+                    <p>Muscle mass piechart</p>
+                    <PieChart
+                        data={[
+                            //probni podaci
+                            { title: 'Muscle', value: 10, color: '#D00000' },
+                            { title: 'Fat', value: 15, color: '#2B9348' },
+                        ]}
+                    />
                 </Box>
             </Box>
         );
