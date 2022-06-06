@@ -70,14 +70,14 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
                                     </FormControl>
                                     <FormControl isRequired isInvalid={weight === ''}>
                                         <FormLabel>Weight </FormLabel>
-                                        <NumberInput min="1" oninput="this.value = Math.abs(this.value)">
+                                        <NumberInput min="1">
                                             <NumberInputField
                                                 style={{ height: '48px' }}
                                                 type="number"
                                                 placeholder="weight"
                                                 size="lg"
                                                 value={weight}
-                                                onChange={(event) => setWeight(event.currentTarget.value)}
+                                                onChange={(event) => setWeight(Math.abs(event.currentTarget.value))}
                                             />
                                             <NumberInputStepper>
                                                 <NumberIncrementStepper />
@@ -87,14 +87,14 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
                                     </FormControl>
                                     <FormControl isRequired isInvalid={reps === ''}>
                                         <FormLabel>Reps </FormLabel>
-                                        <NumberInput min="1" oninput="this.value = Math.abs(this.value)">
+                                        <NumberInput min="1">
                                             <NumberInputField
                                                 style={{ height: '48px' }}
                                                 type="number"
                                                 placeholder="reps"
                                                 size="lg"
                                                 value={reps}
-                                                onChange={(event) => setReps(event.currentTarget.value)}
+                                                onChange={(event) => setReps(Math.abs(event.currentTarget.value))}
                                             />
                                             <NumberInputStepper>
                                                 <NumberIncrementStepper />

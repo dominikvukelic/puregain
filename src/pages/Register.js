@@ -142,12 +142,12 @@ export default function Register() {
                             </FormControl>
                             <FormControl isRequired isInvalid={age === ''}>
                                 <FormLabel>Age</FormLabel>
-                                <NumberInput min="1" oninput="this.value = Math.abs(this.value)">
+                                <NumberInput min="1">
                                     <NumberInputField
                                         type="number"
                                         placeholder="age"
                                         size="lg"
-                                        onChange={(event) => setAge(event.currentTarget.value)}
+                                        onChange={(event) => setAge(Math.abs(event.currentTarget.value))}
                                     />
                                     {age === '' ? <FormErrorMessage>Age is required.</FormErrorMessage> : ''}
                                     <NumberInputStepper>
@@ -158,12 +158,12 @@ export default function Register() {
                             </FormControl>
                             <FormControl isRequired isInvalid={height === ''}>
                                 <FormLabel>Height - in centimeters</FormLabel>
-                                <NumberInput min="1" oninput="this.value = Math.abs(this.value)">
+                                <NumberInput min="1">
                                     <NumberInputField
                                         type="number"
                                         placeholder="height"
                                         size="lg"
-                                        onChange={(event) => setHeight(event.currentTarget.value)}
+                                        onChange={(event) => setHeight(Math.abs(event.currentTarget.value))}
                                     />
                                     {height === '' ? <FormErrorMessage>Height is required.</FormErrorMessage> : ''}
                                     <NumberInputStepper>
@@ -174,12 +174,12 @@ export default function Register() {
                             </FormControl>
                             <FormControl isRequired isInvalid={userWeight === ''}>
                                 <FormLabel>Weight - in kilos</FormLabel>
-                                <NumberInput min="1" oninput="this.value = Math.abs(this.value)">
+                                <NumberInput min="1">
                                     <NumberInputField
                                         type="number"
                                         placeholder="user weight"
                                         size="lg"
-                                        onChange={(event) => setUserWeight(event.currentTarget.value)}
+                                        onChange={(event) => setUserWeight(Math.abs(event.currentTarget.value))}
                                     />
                                     {userWeight === '' ? <FormErrorMessage>User weight is required.</FormErrorMessage> : ''}
                                     <NumberInputStepper>
