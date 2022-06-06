@@ -14,10 +14,10 @@ function TrainingHistory(handleDelete, id) {
         navigate('/login');
     } else {
         return (
-            <Flex width="full" align="center" justifyContent="center" paddingTop="60px" mr="5px" ml="5px" maxWidth="1800px">
+            <Flex width="full" align="center" justifyContent="center" paddingTop="60px" mr="5px" ml="5px" maxWidth="1200px">
                 <Box borderWidth={1} borderRadius={8} boxShadow="lg">
                     <>
-                        <HStack divider={<StackDivider borderColor="gray.400" />} spacing={4} align="stretch">
+                        <HStack divider={<StackDivider borderColor="gray.400" />} spacing={2} align="stretch">
                             <Box w="10%">Training name</Box>
                             <Box w="10%">Date</Box>
                             <Box w="10%">Lifted Weight</Box>
@@ -30,7 +30,7 @@ function TrainingHistory(handleDelete, id) {
                         {trainingData.map((t) => {
                             const date = t.date.toDate();
                             return (
-                                <HStack key={t.id} divider={<StackDivider borderColor="gray.400" />} spacing={4} align="stretch">
+                                <HStack key={t.id} divider={<StackDivider borderColor="gray.400" />} spacing={2} align="stretch">
                                     <Box w="10%">{`${t.trainingName}`}</Box>
                                     <Box w="10%">{`${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`}</Box>
                                     <Box w="10%">{`${t.liftedWeight}`}</Box>

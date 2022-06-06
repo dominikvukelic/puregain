@@ -61,7 +61,7 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
                                         <FormLabel>Exercise name</FormLabel>
                                         <Input
                                             style={{ height: '48px' }}
-                                            type="exercise-name"
+                                            type="text"
                                             placeholder="exercise-name"
                                             size="lg"
                                             value={exerciseName}
@@ -73,7 +73,7 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
                                         <NumberInput>
                                             <NumberInputField
                                                 style={{ height: '48px' }}
-                                                type="weight"
+                                                type="number"
                                                 placeholder="weight"
                                                 size="lg"
                                                 value={weight}
@@ -90,7 +90,7 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
                                         <NumberInput>
                                             <NumberInputField
                                                 style={{ height: '48px' }}
-                                                type="reps"
+                                                type="number"
                                                 placeholder="reps"
                                                 size="lg"
                                                 value={reps}

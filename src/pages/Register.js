@@ -76,7 +76,7 @@ export default function Register() {
                             <FormControl isRequired isInvalid={name === ''}>
                                 <FormLabel>Name</FormLabel>
                                 <Input
-                                    type="name"
+                                    type="text"
                                     placeholder="name"
                                     size="lg"
                                     onChange={(event) => setName(event.currentTarget.value.replace(/[^a-z]/gi, ''))}
@@ -86,7 +86,7 @@ export default function Register() {
                             <FormControl isRequired isInvalid="Enter data into field">
                                 <FormLabel>Surname</FormLabel>
                                 <Input
-                                    type="surname"
+                                    type="text"
                                     placeholder="surname"
                                     size="lg"
                                     onChange={(event) => setSurname(event.currentTarget.value.replace(/[^a-z]/gi, ''))}
@@ -96,7 +96,7 @@ export default function Register() {
                             <FormControl isRequired isInvalid={username === ''}>
                                 <FormLabel>Username</FormLabel>
                                 <Input
-                                    type="username"
+                                    type="text"
                                     placeholder="username"
                                     size="lg"
                                     onChange={(event) => setUsername(event.currentTarget.value)}
@@ -144,7 +144,7 @@ export default function Register() {
                                 <FormLabel>Age</FormLabel>
                                 <NumberInput>
                                     <NumberInputField
-                                        type="age"
+                                        type="number"
                                         placeholder="age"
                                         size="lg"
                                         onChange={(event) => setAge(event.currentTarget.value)}
@@ -160,7 +160,7 @@ export default function Register() {
                                 <FormLabel>Height - in centimeters</FormLabel>
                                 <NumberInput>
                                     <NumberInputField
-                                        type="height"
+                                        type="number"
                                         placeholder="height"
                                         size="lg"
                                         onChange={(event) => setHeight(event.currentTarget.value)}
@@ -176,7 +176,7 @@ export default function Register() {
                                 <FormLabel>Weight - in kilos</FormLabel>
                                 <NumberInput>
                                     <NumberInputField
-                                        type="weight"
+                                        type="number"
                                         placeholder="user weight"
                                         size="lg"
                                         onChange={(event) => setUserWeight(event.currentTarget.value)}

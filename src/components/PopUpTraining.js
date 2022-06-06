@@ -75,7 +75,7 @@ function PopUpTraining() {
                                         <InputGroup>
                                             <Input
                                                 style={{ height: '48px' }}
-                                                type="training-name"
+                                                type="text"
                                                 placeholder="training-name"
                                                 size="lg"
                                                 value={trainingName}
@@ -93,7 +93,7 @@ function PopUpTraining() {
                                             <NumberInput>
                                                 <NumberInputField
                                                     style={{ height: '48px' }}
-                                                    type="training-duration"
+                                                    type="number"
                                                     placeholder="training-duration"
                                                     size="lg"
                                                     value={trainingDurationtemp}
