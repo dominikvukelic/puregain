@@ -32,7 +32,8 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
     const [reps, setReps] = useState('');
     const [weight, setWeight] = useState('');
 
-    const handleAddExercise = () => {
+    const handleAddExercise = (event) => {
+        event.preventDefault();
         const ExerciseData = { exerciseName: exerciseName, reps: reps, weight: weight, id: nanoid() };
         AddExerciseForTraining(ExerciseData);
         onClose();
@@ -56,7 +57,7 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
                         <ModalCloseButton />
                         <ModalBody>
                             <Stack direction={['column']} spacing={1}>
-                                <form /* onSubmit={handleAddExercise} id="addexercisepopup" */>
+                                <form onSubmit={handleAddExercise} id="addexercisepopup">
                                     <FormControl isRequired isInvalid={exerciseName === ''}>
                                         <FormLabel>Exercise name</FormLabel>
                                         <Input
@@ -107,7 +108,7 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
                         </ModalBody>
 
                         <ModalFooter>
-                            <Button colorScheme="teal" onClick={handleAddExercise}>
+                            <Button colorScheme="teal" /* onClick={handleAddExercise} */ type="submit" form="addexercisepopup">
                                 Confirm
                             </Button>
                             <Button colorScheme="red" ml={3} onClick={onClose}>
