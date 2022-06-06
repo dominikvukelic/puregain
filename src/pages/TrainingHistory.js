@@ -14,8 +14,8 @@ function TrainingHistory(handleDelete, id) {
         navigate('/login');
     } else {
         return (
-            <Flex width="full" align="center" justifyContent="center" paddingTop="60px" mr="5px" ml="5px" maxWidth="1200px">
-                <Box borderWidth={1} borderRadius={8} boxShadow="lg">
+            <Flex align="center" justifyContent="center" paddingTop="60px" mr="5px" ml="5px" mb="5px" maxWidth="1200px">
+                <Box borderWidth={1} borderRadius={8} boxShadow="dark-lg" p="6" rounded="md" borderColor="teal">
                     <>
                         <HStack divider={<StackDivider borderColor="gray.400" />} spacing={2} align="stretch">
                             <Box w="10%">Training name</Box>

@@ -142,7 +142,7 @@ export default function Register() {
                             </FormControl>
                             <FormControl isRequired isInvalid={age === ''}>
                                 <FormLabel>Age</FormLabel>
-                                <NumberInput>
+                                <NumberInput min="1" oninput="this.value = Math.abs(this.value)">
                                     <NumberInputField
                                         type="number"
                                         placeholder="age"
@@ -158,7 +158,7 @@ export default function Register() {
                             </FormControl>
                             <FormControl isRequired isInvalid={height === ''}>
                                 <FormLabel>Height - in centimeters</FormLabel>
-                                <NumberInput>
+                                <NumberInput min="1" oninput="this.value = Math.abs(this.value)">
                                     <NumberInputField
                                         type="number"
                                         placeholder="height"
@@ -174,7 +174,7 @@ export default function Register() {
                             </FormControl>
                             <FormControl isRequired isInvalid={userWeight === ''}>
                                 <FormLabel>Weight - in kilos</FormLabel>
-                                <NumberInput>
+                                <NumberInput min="1" oninput="this.value = Math.abs(this.value)">
                                     <NumberInputField
                                         type="number"
                                         placeholder="user weight"

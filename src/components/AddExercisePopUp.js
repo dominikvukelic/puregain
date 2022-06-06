@@ -70,7 +70,7 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
                                     </FormControl>
                                     <FormControl isRequired isInvalid={weight === ''}>
                                         <FormLabel>Weight </FormLabel>
-                                        <NumberInput>
+                                        <NumberInput min="1" oninput="this.value = Math.abs(this.value)">
                                             <NumberInputField
                                                 style={{ height: '48px' }}
                                                 type="number"
@@ -87,7 +87,7 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
                                     </FormControl>
                                     <FormControl isRequired isInvalid={reps === ''}>
                                         <FormLabel>Reps </FormLabel>
-                                        <NumberInput>
+                                        <NumberInput min="1" oninput="this.value = Math.abs(this.value)">
                                             <NumberInputField
                                                 style={{ height: '48px' }}
                                                 type="number"
