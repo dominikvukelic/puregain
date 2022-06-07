@@ -26,8 +26,7 @@ function TrainingPage() {
         setexerciseForTraining([...exerciseForTraining.filter((e) => e.id !== id)]);
     };
 
-    /*  const deleteExerciseFromTraining = (id) => {
-        setexerciseForTraining([...exerciseForTraining.filter((e) => e.id !== id)]);
+    /*  
         //dodat za edit i dodat popup
     }; */
 

@@ -36,10 +36,10 @@ function UserInfo(/* handleEdit napravit novi */) {
         navigate('/login');
     } else {
         return (
-            <Box padding={8} maxWidth="500px" borderWidth={1} borderRadius={8} boxShadow="lg">
+            <Box padding={8} maxWidth="500px" borderWidth={1} borderRadius={8} boxShadow="lg" margin="0 10px">
                 <Box>
                     <Stack divider={<StackDivider borderColor="gray.400" />} spacing={4} align="stretch">
-                        <Box>
+                        <Box padding={8} borderWidth={1} borderRadius={8} boxShadow="lg" maxWidth="500px">
                             <p className="button-text">Edit user data</p>
                             <IconButton
                                 aria-label="Edit user data"
@@ -62,7 +62,7 @@ function UserInfo(/* handleEdit napravit novi */) {
                         <Box>Weight: {userData.userWeight}</Box>
                     </Stack>
                 </Box>
-                <Box padding={8} borderWidth={1} borderRadius={8} boxShadow="lg" maxWidth="500px">
+                <Box padding={8} borderWidth={1} borderRadius={8} boxShadow="lg" maxWidth="500px" mt="10px">
                     <p>BMI data</p>
                     <Heading as="h3" size="lg">
                         {/* {message}

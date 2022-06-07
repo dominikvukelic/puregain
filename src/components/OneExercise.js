@@ -6,7 +6,7 @@ import './OneExercise.css';
 function OneExercise({ exercisename, weight, reps, handleDelete, id, handleEdit }) {
     return (
         <>
-            <ListItem>
+            <ListItem fontSize="xs">
                 <Grid templateColumns="repeat(5, 1fr)" gap={6} className="item" bg="teal">
                     <GridItem w="100%" h="30px">
                         <p>Exercise name</p>

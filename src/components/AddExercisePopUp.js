@@ -108,7 +108,7 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
                         </ModalBody>
 
                         <ModalFooter>
-                            <Button colorScheme="teal" /* onClick={handleAddExercise} */ type="submit" form="addexercisepopup">
+                            <Button colorScheme="teal" onClick={handleAddExercise} type="submit" form="addexercisepopup">
                                 Confirm
                             </Button>
                             <Button colorScheme="red" ml={3} onClick={onClose}>
