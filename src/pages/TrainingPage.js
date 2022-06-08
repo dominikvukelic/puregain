@@ -6,12 +6,31 @@ import AddExercisePopUp from '../components/AddExercisePopUp';
 import { TrainingContext } from '../context/TrainingContext';
 import { useNavigate } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import database from '../FirebaseConfig';
 /* import { getUserInfo } from './UserInfo'; */
 
 function TrainingPage() {
-    /* const email = auth.currentUser.email; */
+    //user info
+    const getUserInfo = async () => {
+        try {
+            const first = query(collection(database, 'users'), where('email', '==', email));
+            const documentSnapshot = await getDocs(first);
+            setuserData(documentSnapshot.docs[0].data());
+            console.log(userData);
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
+    useEffect(() => {
+        getUserInfo();
+    }, []);
+    //
+
     const [userData, setuserData] = useState('');
     const auth = getAuth();
+    const email = auth.currentUser.email;
     const { addTraining, trainingNametemp, date, trainingDurationtemp } = useContext(TrainingContext);
 
     const [exerciseForTraining, setexerciseForTraining] = useState([]);
@@ -33,12 +52,13 @@ function TrainingPage() {
     useEffect(() => {
         setliftedWeight(exerciseForTraining.reduce((sum, t) => sum + t.weight * t.reps, 0));
     }, [exerciseForTraining]);
-    /* useEffect(() => {
-        setburnedCalories(trainingDuration * 6 * currentUser.userWeight));
-    }, []); */
+    useEffect(() => {
+        setburnedCalories(trainingDurationtemp * 6 * userData.weight);
+    }, []);
+
     const insertTrainingIntoFirebase = () => {
         const trainingTempdata = {
-            burnedCalories: '',
+            burnedCalories: burnedCalories,
             date: date,
             liftedWeight: liftedWeight,
             time: '',
@@ -98,6 +118,7 @@ function TrainingPage() {
                             <h3>{liftedWeight} kilos</h3>
                             <p>Burned Calories</p>
                             <h3>{burnedCalories} kcal</h3>
+                            console.log(burnedCalories);
                             <Button colorScheme="teal" onClick={insertTrainingIntoFirebase}>
                                 Finish training
                             </Button>
