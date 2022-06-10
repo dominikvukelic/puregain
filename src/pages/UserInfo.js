@@ -36,7 +36,7 @@ function UserInfo(/* handleEdit napravit novi */) {
         navigate('/login');
     } else {
         return (
-            <Box padding={8} maxWidth="500px" borderWidth={1} borderRadius={8} boxShadow="lg" margin="0 10px">
+            <Box paddingLeft="10px" maxWidth="500px" borderWidth={1} borderRadius={8} boxShadow="lg" margin="0 10px">
                 <Box>
                     <Stack divider={<StackDivider borderColor="gray.400" />} spacing={4} align="stretch">
                         <Box padding={8} borderWidth={1} borderRadius={8} boxShadow="lg" maxWidth="500px">

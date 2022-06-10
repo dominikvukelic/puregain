@@ -20,7 +20,7 @@ function TrainingHistory(handleDelete, id) {
                 borderRadius={15}
                 boxShadow="dark-lg"
                 borderColor="teal"
-                paddingTop="60px"
+                paddingTop="20px"
                 mr="5px"
                 ml="15px"
                 mb="5px"
