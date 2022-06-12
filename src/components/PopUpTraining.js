@@ -97,7 +97,9 @@ function PopUpTraining() {
                                                     placeholder="training-duration"
                                                     size="lg"
                                                     value={trainingDurationtemp}
-                                                    onChange={(event) => setTrainingDurationtemp(Math.abs(event.currentTarget.value))}
+                                                    onChange={(event) =>
+                                                        setTrainingDurationtemp(Math.abs(Math.trunc(event.currentTarget.value)))
+                                                    }
                                                 />
                                                 <NumberInputStepper>
                                                     <NumberIncrementStepper />

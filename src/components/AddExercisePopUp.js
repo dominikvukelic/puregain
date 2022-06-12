@@ -78,7 +78,7 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
                                                 placeholder="weight"
                                                 size="lg"
                                                 value={weight}
-                                                onChange={(event) => setWeight(Math.abs(event.currentTarget.value))}
+                                                onChange={(event) => setWeight(Math.abs(Math.trunc(event.currentTarget.value)))}
                                             />
                                             <NumberInputStepper>
                                                 <NumberIncrementStepper />
@@ -95,7 +95,7 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
                                                 placeholder="reps"
                                                 size="lg"
                                                 value={reps}
-                                                onChange={(event) => setReps(Math.abs(event.currentTarget.value))}
+                                                onChange={(event) => setReps(Math.abs(Math.trunc(event.currentTarget.value)))}
                                             />
                                             <NumberInputStepper>
                                                 <NumberIncrementStepper />
