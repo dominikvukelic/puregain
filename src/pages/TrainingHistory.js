@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { IconButton, Box, HStack, StackDivider } from '@chakra-ui/react';
 import { TrainingContext } from '../context/TrainingContext';
 import { TrashIcon } from '@primer/octicons-react';
@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import './TrainingHistory.css';
 
 function TrainingHistory(handleDelete, id) {
-    const { trainingData } = useContext(TrainingContext);
+    const { trainingData, handleGetTraining } = useContext(TrainingContext);
     const auth = getAuth();
     const navigate = useNavigate();
 

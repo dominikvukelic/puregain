@@ -15,6 +15,13 @@ function UserInfo(/* handleEdit napravit novi */) {
     const navigate = useNavigate();
     const email = auth.currentUser.email;
     const [userData, setuserData] = useState('');
+    let muscleMass = Math.floor(0.3281 * userData.userWeight + 0.33929 * userData.height - 29.5336);
+
+    let fatMass = 100 - muscleMass;
+
+    const [message, setMessage] = useState('');
+    const [optimalweight, setoptimalweight] = useState('');
+    const [bmi, setBMI] = useState('');
 
     //exportat
     const getUserInfo = async () => {
@@ -22,14 +29,31 @@ function UserInfo(/* handleEdit napravit novi */) {
             const first = query(collection(database, 'users'), where('email', '==', email));
             const documentSnapshot = await getDocs(first);
             setuserData(documentSnapshot.docs[0].data());
-            console.log(userData);
+            return documentSnapshot.docs[0].data();
         } catch (e) {
             console.log(e);
         }
     };
 
     useEffect(() => {
-        getUserInfo();
+        getUserInfo().then((data) => {
+            let heightSquared = ((data.height / 100) * data.height) / 100;
+            setBMI(Math.round(data.userWeight / heightSquared));
+            let low = Math.round(18.5 * heightSquared);
+            let high = Math.round(24.99 * heightSquared);
+
+            if (bmi >= 18.5 && bmi <= 24.99) {
+                setMessage('You are in a healthy weight range');
+            } else if (bmi >= 25 && bmi <= 29.9) {
+                setMessage('You are overweight');
+            } else if (bmi >= 30) {
+                setMessage('You are obese');
+            } else if (bmi < 18.5) {
+                setMessage('You are under weight');
+            }
+
+            setoptimalweight('Your suggested weight range is between ' + low + ' - ' + high);
+        });
     }, []);
 
     if (!auth.currentUser) {
@@ -64,10 +88,15 @@ function UserInfo(/* handleEdit napravit novi */) {
                 </Box>
                 <Box padding={8} borderWidth={1} borderRadius={8} boxShadow="lg" maxWidth="500px" mt="10px">
                     <p>BMI data</p>
-                    <Heading as="h3" size="lg">
-                        {/* {message}
+                    <Heading as="h6" size="xs">
+                        {message}
+                    </Heading>
+                    <Heading as="h6" size="xs">
                         {optimalweight}
-                        {bmi} */}
+                    </Heading>
+                    <Heading as="h6" size="xs">
+                        <p>Your BMI is:</p>
+                        {bmi}
                     </Heading>
                 </Box>
 
@@ -76,8 +105,8 @@ function UserInfo(/* handleEdit napravit novi */) {
                     <PieChart
                         data={[
                             //probni podaci
-                            { title: 'Muscle', value: 10, color: '#D00000' },
-                            { title: 'Fat', value: 15, color: '#2B9348' },
+                            { title: 'Muscle', value: muscleMass, color: '#D00000' },
+                            { title: 'Fat', value: fatMass, color: '#2B9348' },
                         ]}
                     />
                 </Box>

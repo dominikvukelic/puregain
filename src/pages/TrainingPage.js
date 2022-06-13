@@ -17,7 +17,6 @@ function TrainingPage() {
             const first = query(collection(database, 'users'), where('email', '==', email));
             const documentSnapshot = await getDocs(first);
             setuserData(documentSnapshot.docs[0].data());
-            console.log(userData);
         } catch (e) {
             console.log(e);
         }
@@ -53,17 +52,18 @@ function TrainingPage() {
         setliftedWeight(exerciseForTraining.reduce((sum, t) => sum + t.weight * t.reps, 0));
     }, [exerciseForTraining]);
     useEffect(() => {
-        setburnedCalories(trainingDurationtemp * 6 * userData.weight);
-    }, []);
+        setburnedCalories((trainingDurationtemp / 60) * (6 * userData.userWeight));
+    }, [trainingDurationtemp, userData]);
+
+    console.log(userData);
 
     const insertTrainingIntoFirebase = () => {
         const trainingTempdata = {
             burnedCalories: burnedCalories,
             date: date,
             liftedWeight: liftedWeight,
-            time: '',
             trainingName: trainingNametemp,
-            userid: 1,
+            userid: auth.currentUser.uid,
             exercisesInTraining: exerciseForTraining,
             trainingDuration: trainingDurationtemp,
         };

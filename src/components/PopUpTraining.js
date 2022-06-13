@@ -48,7 +48,7 @@ function PopUpTraining() {
 
         navigate('/trainingpage');
     };
-    console.log(auth.currentUser);
+
     if (!auth.currentUser) {
         navigate('/login');
     } else {

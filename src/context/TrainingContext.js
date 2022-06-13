@@ -1,9 +1,11 @@
 import React, { useState, useEffect, createContext } from 'react';
 
-import { collection, getDocs, addDoc } from 'firebase/firestore';
+import { collection, getDocs, addDoc, where, query } from 'firebase/firestore';
 import database from '../FirebaseConfig';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 export const TrainingContext = createContext();
+const auth = getAuth();
 
 export const addUser = async (data, direction, state, setState) => {
     try {
@@ -30,9 +32,11 @@ export const addTraining = async (data, direction, state, setState) => {
     }
 };
 
-export const getTraining = async (dbPath, setData) => {
+export const getTraining = async (dbPath, setData, uid) => {
     let temp = [];
-    const querySnapshot = await getDocs(collection(database, dbPath));
+    const queryTraining = query(collection(database, dbPath), where('userid', '==', uid));
+    const querySnapshot = await getDocs(queryTraining);
+
     for (const doc of querySnapshot.docs) {
         const ExercisesDoneDuringTraining = await getExercisesDoneDuringTraining(doc.id);
 
@@ -46,10 +50,11 @@ export function TrainingProvider({ children }) {
     const [date, setDate] = useState(new Date());
     const [trainingNametemp, setTrainingNametemp] = useState('');
     const [trainingDurationtemp, setTrainingDurationtemp] = useState('');
-    useEffect(() => {
-        getTraining('trainings', setTrainingData);
-    }, []);
-    console.log(trainingData);
+
+    onAuthStateChanged(auth, (user) => {
+        getTraining('trainings', setTrainingData, user.uid);
+    });
+
     return (
         <TrainingContext.Provider
             value={{

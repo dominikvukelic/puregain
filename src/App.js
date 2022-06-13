@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ThemeProvider, theme, CSSReset } from '@chakra-ui/react';
 
 import Login from './pages/Login';
@@ -11,13 +11,32 @@ import PopUpTraining from './components/PopUpTraining';
 import './App.css';
 import UserInfo from './pages/UserInfo';
 import TrainingHistory from './pages/TrainingHistory';
-import { getAuth } from 'firebase/auth';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 export default function App() {
     const auth = getAuth();
-    console.log(auth.currentUser);
-    return (
+    const [oldUser, setOldUser] = useState(false);
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+
+    onAuthStateChanged(auth, (user) => {
+        if (user && user !== oldUser) {
+            user.getIdTokenResult().then((idTokenResult) => {
+                setIsLoggedIn(true);
+                setOldUser(user);
+            });
+        } else {
+            setIsLoggedIn(false);
+        }
+        setIsLoading(false);
+    });
+
+    return isLoading ? (
+        <></>
+    ) : (
         <>
+            {' '}
             <ThemeProvider theme={theme}>
                 <NavBar />
 
