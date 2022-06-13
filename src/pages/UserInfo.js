@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Stack, StackDivider, IconButton, Box, Heading } from '@chakra-ui/react';
+import { Stack, StackDivider, IconButton, Box, Heading, Divider } from '@chakra-ui/react';
 import { TrainingContext } from '../context/TrainingContext';
 import { PencilIcon } from '@primer/octicons-react';
 import { getAuth } from 'firebase/auth';
@@ -23,7 +23,6 @@ function UserInfo(/* handleEdit napravit novi */) {
     const [optimalweight, setoptimalweight] = useState('');
     const [bmi, setBMI] = useState('');
 
-    //exportat
     const getUserInfo = async () => {
         try {
             const first = query(collection(database, 'users'), where('email', '==', email));
@@ -52,7 +51,7 @@ function UserInfo(/* handleEdit napravit novi */) {
                 setMessage('You are under weight');
             }
 
-            setoptimalweight('Your suggested weight range is between ' + low + ' - ' + high);
+            setoptimalweight('Your suggested weight range is between ' + low + ' - ' + high + ' kilos');
         });
     }, []);
 
@@ -86,18 +85,15 @@ function UserInfo(/* handleEdit napravit novi */) {
                         <Box>Weight: {userData.userWeight}</Box>
                     </Stack>
                 </Box>
-                <Box padding={8} borderWidth={1} borderRadius={8} boxShadow="lg" maxWidth="500px" mt="10px">
-                    <p>BMI data</p>
-                    <Heading as="h6" size="xs">
-                        {message}
-                    </Heading>
-                    <Heading as="h6" size="xs">
-                        {optimalweight}
-                    </Heading>
-                    <Heading as="h6" size="xs">
-                        <p>Your BMI is:</p>
-                        {bmi}
-                    </Heading>
+                <Box>
+                    <Stack spacing={4} align="stretch">
+                        <Box padding={8} borderWidth={1} borderRadius={8} boxShadow="lg" maxWidth="500px" mt="10px">
+                            <p>BMI data</p>
+                            <Box>{message}</Box>
+                            <Box>{optimalweight}</Box>
+                            <Box>Your BMI is: {bmi}</Box>
+                        </Box>
+                    </Stack>
                 </Box>
 
                 <Box padding={8} borderWidth={1} borderRadius={8} boxShadow="lg" maxWidth="500px">
