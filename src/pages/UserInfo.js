@@ -13,10 +13,11 @@ function UserInfo(/* handleEdit napravit novi */) {
     const { trainingData } = useContext(TrainingContext);
     const auth = getAuth();
     const navigate = useNavigate();
-    const email = auth.currentUser.email;
+    
     const [userData, setuserData] = useState('');
-    let fatMass = Math.floor((0.3281 * userData.userWeight) + (0.33929 * userData.height) - 29.5336);
-    let  muscleMass = 100 - fatMass;
+    const [muscleMass, setMuscleMass]= useState(0);
+    const [fatMass, setFatMass]= useState(0);
+   
 
     const [message, setMessage] = useState('');
     const [optimalweight, setoptimalweight] = useState('');
@@ -24,7 +25,7 @@ function UserInfo(/* handleEdit napravit novi */) {
 
     const getUserInfo = async () => {
         try {
-            const first = query(collection(database, 'users'), where('email', '==', email));
+            const first = query(collection(database, 'users'), where('email', '==', auth.currentUser.email));
             const documentSnapshot = await getDocs(first);
             setuserData(documentSnapshot.docs[0].data());
             return documentSnapshot.docs[0].data();
@@ -38,10 +39,7 @@ function UserInfo(/* handleEdit napravit novi */) {
         fontFamily: 'sans-serif',
     };
 
-    const dataPieChart = [
-        { title: 'Muscle', value: muscleMass, color: '#D00000' },
-        { title: 'Fat', value: fatMass, color: '#2B9348' },
-    ];
+  
 
     useEffect(() => {
         getUserInfo().then((data) => {
@@ -61,12 +59,18 @@ function UserInfo(/* handleEdit napravit novi */) {
             }
 
             setoptimalweight('Your suggested weight is between ' + low + ' and ' + high + ' kilos');
+
+            if (data.gender==="male"){
+                 setFatMass(Math.floor((0.3281 * data.userWeight) + (0.33929 * data.height) - 29.5336));
+    setMuscleMass(100 - fatMass);
+                
+            } else {setFatMass(Math.floor(0.29569 * data.userWeight + 0.41813 * data.height - 43.2933));
+            setMuscleMass(100 - fatMass); }
         });
     }, []);
 
-    if (!auth.currentUser) {
-        navigate('/login');
-    } else {
+    console.log(muscleMass);
+   
         return (
             <Box paddingLeft="10px" maxWidth="500px" borderWidth={1} borderRadius={8} boxShadow="lg" margin="0 10px">
                 <Box>
@@ -108,7 +112,8 @@ function UserInfo(/* handleEdit napravit novi */) {
                     </Stack>
                     <Box mb="5px">Muscle mass piechart</Box>
                     <PieChart
-                        data={dataPieChart}
+                        data={[{ title: 'Muscle', value: muscleMass, color: '#D00000' },
+                        { title: 'Fat', value: fatMass, color: '#2B9348' }]}
                         label={({ dataEntry }) => `${dataEntry.value}% ${dataEntry.title}`}
                         labelStyle={{
                             ...defaultLabelStyle,
@@ -118,6 +123,6 @@ function UserInfo(/* handleEdit napravit novi */) {
             </Box>
         );
     }
-}
+
 
 export default UserInfo;

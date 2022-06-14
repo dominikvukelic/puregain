@@ -11,9 +11,7 @@ function TrainingHistory(handleDelete, id) {
     const auth = getAuth();
     const navigate = useNavigate();
 
-    if (!auth.currentUser) {
-        navigate('/login');
-    } else {
+   
         return (
             <Box
                 borderWidth={1}
@@ -72,6 +70,6 @@ function TrainingHistory(handleDelete, id) {
             </Box>
         );
     }
-}
+
 
 export default TrainingHistory;
