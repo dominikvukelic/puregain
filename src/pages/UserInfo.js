@@ -61,7 +61,7 @@ function UserInfo(/* handleEdit napravit novi */) {
                 setMessage('You are under weight');
             }
 
-            setoptimalweight('Your suggested weight range is between ' + low + ' - ' + high + ' kilos');
+            setoptimalweight('Your suggested weight is between ' + low + ' and ' + high + ' kilos');
         });
     }, []);
 
