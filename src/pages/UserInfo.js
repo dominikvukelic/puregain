@@ -110,7 +110,7 @@ function UserInfo(/* handleEdit napravit novi */) {
                     <Box mb="5px">Muscle mass piechart</Box>
                     <PieChart
                         data={dataPieChart}
-                        label={({ dataEntry }) => `${dataEntry.value}%`}
+                        label={({ dataEntry }) => `${dataEntry.value}% ${dataEntry.title}`}
                         labelStyle={{
                             ...defaultLabelStyle,
                         }}
