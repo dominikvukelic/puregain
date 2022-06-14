@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { IconButton, Box, HStack, StackDivider } from '@chakra-ui/react';
 import { TrainingContext } from '../context/TrainingContext';
 import { TrashIcon } from '@primer/octicons-react';
@@ -29,7 +29,7 @@ function TrainingHistory(handleDelete, id) {
                 noOfLines={1}
             >
                 <Box>
-                    <HStack divider={<StackDivider borderColor="gray.600" />} spacing={1} align="stretch" mb="1px">
+                    <HStack divider={<StackDivider borderColor="black" />} spacing={1} align="stretch" mb="1px">
                         <Box w="100%" bg="teal">
                             Training name
                         </Box>
@@ -38,26 +38,24 @@ function TrainingHistory(handleDelete, id) {
                             Lifted Weight
                         </Box>
                         <Box w="100%">Burned calories</Box>
+
                         <Box w="100%" bg="teal">
-                            Exercises done during training
+                            Training duration
                         </Box>
-                        <Box w="100%">Training duration</Box>
-                        <Box w="25%" bg="teal">
-                            Delete
-                        </Box>
+                        <Box w="25%">Delete</Box>
                     </HStack>
 
                     {trainingData.map((t) => {
                         const date = t.date.toDate();
                         return (
-                            <HStack key={t.id} divider={<StackDivider borderColor="gray.600" />} spacing={1} align="stretch" mb="1px">
+                            <HStack key={t.id} divider={<StackDivider borderColor="black" />} spacing={1} align="stretch" mb="1px">
                                 <Box w="100%" bg="teal">{`${t.trainingName}`}</Box>
                                 <Box w="100%">{`${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`}</Box>
                                 <Box w="100%" bg="teal">{`${t.liftedWeight}`}</Box>
                                 <Box w="100%">{`${t.burnedcalories}`}</Box>
-                                <Box w="100%" bg="teal">{`${t.exercisesIntraining}`}</Box>
-                                <Box w="100%">{`${t.trainingDuration}`}</Box>
-                                <Box w="25%" bg="teal">
+
+                                <Box w="100%" bg="teal">{`${t.trainingDuration}`}</Box>
+                                <Box w="25%">
                                     <IconButton
                                         aria-label="Delete"
                                         icon={<TrashIcon />}
