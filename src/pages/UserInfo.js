@@ -15,9 +15,8 @@ function UserInfo(/* handleEdit napravit novi */) {
     const navigate = useNavigate();
     const email = auth.currentUser.email;
     const [userData, setuserData] = useState('');
-    let muscleMass = Math.floor(0.3281 * userData.userWeight + 0.33929 * userData.height - 29.5336);
-
-    let fatMass = 100 - muscleMass;
+    let fatMass = Math.floor((0.3281 * userData.userWeight) + (0.33929 * userData.height) - 29.5336);
+    let  muscleMass = 100 - fatMass;
 
     const [message, setMessage] = useState('');
     const [optimalweight, setoptimalweight] = useState('');
