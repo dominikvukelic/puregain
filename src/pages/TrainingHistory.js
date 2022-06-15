@@ -46,7 +46,7 @@ function TrainingHistory(handleDelete, id) {
                             <Box w="100%" bg="teal">{`${t.trainingName}`}</Box>
                             <Box w="100%">{`${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`}</Box>
                             <Box w="100%" bg="teal">{`${t.liftedWeight}`}</Box>
-                            <Box w="100%">{`${t.burnedcalories}`}</Box>
+                            <Box w="100%">{`${t.burnedCalories}`}</Box>
 
                             <Box w="100%" bg="teal">{`${t.trainingDuration}`}</Box>
                             <Box w="25%">
