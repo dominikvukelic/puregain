@@ -23,9 +23,9 @@ import {
     NumberInputStepper,
     NumberDecrementStepper,
 } from '@chakra-ui/react';
-/* import DatePickerComponent from './DatePicker'; */
+
 import { useNavigate } from 'react-router-dom';
-/* import TrainingPage from '../pages/TrainingPage'; */
+
 import { TrainingContext } from '../context/TrainingContext';
 import DatePicker from 'react-datepicker';
 import { getAuth } from 'firebase/auth';

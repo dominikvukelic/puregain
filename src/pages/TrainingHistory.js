@@ -51,14 +51,6 @@ function TrainingHistory(handleDelete, id) {
                             <Box w="100%" bg="teal">{`${t.trainingDuration}`}</Box>
                             <Box w="25%">
                                 <PopUpConfirmDeleteTraining id={t.id} />
-                                {/* <IconButton
-                                        aria-label="Delete"
-                                        icon={<TrashIcon />}
-                                        className="item-delete-btn"
-                                        /* onClick={() => handleDelete(id)} */
-                                /*  >
-                                        Delete
-                                    </IconButton> */}{' '}
                             </Box>
                         </HStack>
                     );
