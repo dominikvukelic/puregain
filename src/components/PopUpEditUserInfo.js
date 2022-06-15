@@ -29,6 +29,25 @@ import { getAuth } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import {  PencilIcon } from '@primer/octicons-react';
 
+import { collection, getDocs, where, query, updateDoc } from 'firebase/firestore';
+import database from '../FirebaseConfig';
+
+
+export const handleUpdateDataF = async (data, email) => {
+    try {
+        const first = query(collection(database, 'users'), where('email', '==', email));
+        const queryRef = await getDocs(first)
+        queryRef.forEach((doc) => {
+             updateDoc(doc, { ...data });
+        });
+      
+      
+      console.log('Document updated.');
+    } catch (e) {
+      console.error('Error updating document: ', e);
+    }
+  };
+
 function PopUpEditUserInfo({userData}) {
     const auth = getAuth();
     const navigate = useNavigate();
@@ -42,14 +61,18 @@ function PopUpEditUserInfo({userData}) {
     const [age, setAge] = useState(userData.age);
     const [height, setHeight] = useState(userData.height);
     const [userWeight, setUserWeight] = useState(userData.userWeight);
+    
 
     const handleEditUserInfo = (event) => {
         event.preventDefault();
-        /* const ExerciseData = { exerciseName: exerciseName, reps: reps, weight: weight, id: nanoid() }; */
-        /* AddExerciseForTraining(ExerciseData); */
+        const data = {name: name, surname: surname, username: username, gender: gender, age: age, height: height, weight: userWeight, email: auth.currentUser.email}
+        handleUpdateDataF(data, auth.currentUser.email)
+        
         onClose();
         
     };
+
+    console.log(userData);
     if (!auth.currentUser) {
         navigate('/login');
     } else {
@@ -81,6 +104,7 @@ function PopUpEditUserInfo({userData}) {
                                     type="text"
                                     placeholder="name"
                                     size="lg"
+                                    defaultValue={name}
                                     onChange={(event) => setName(event.currentTarget.value.replace(/[^a-z]/gi, ''))}
                                 />
                                 {name === '' ? <FormErrorMessage>Name is required.</FormErrorMessage> : ''}
@@ -91,6 +115,7 @@ function PopUpEditUserInfo({userData}) {
                                     type="text"
                                     placeholder="surname"
                                     size="lg"
+                                    defaultValue={surname}
                                     onChange={(event) => setSurname(event.currentTarget.value.replace(/[^a-z]/gi, ''))}
                                 />
                                 {surname === '' ? <FormErrorMessage>Surame is required.</FormErrorMessage> : ''}
@@ -101,6 +126,7 @@ function PopUpEditUserInfo({userData}) {
                                     type="text"
                                     placeholder="username"
                                     size="lg"
+                                    defaultValue={username}
                                     onChange={(event) => setUsername(event.currentTarget.value)}
                                 />
                                 {username === '' ? <FormErrorMessage>Username is required.</FormErrorMessage> : ''}
@@ -122,6 +148,7 @@ function PopUpEditUserInfo({userData}) {
                                         type="number"
                                         placeholder="age"
                                         size="lg"
+                                        defaultValue={age}
                                         onChange={(event) => setAge(Math.abs(Math.trunc(event.currentTarget.value)))}
                                     />
                                     {age === '' ? <FormErrorMessage>Age is required.</FormErrorMessage> : ''}
@@ -138,6 +165,7 @@ function PopUpEditUserInfo({userData}) {
                                         type="number"
                                         placeholder="height"
                                         size="lg"
+                                        defaultValue={height}
                                         onChange={(event) => setHeight(Math.abs(Math.trunc(event.currentTarget.value)))}
                                     />
                                     {height === '' ? <FormErrorMessage>Height is required.</FormErrorMessage> : ''}
@@ -154,6 +182,7 @@ function PopUpEditUserInfo({userData}) {
                                         type="number"
                                         placeholder="user weight"
                                         size="lg"
+                                        defaultValue={userWeight}
                                         onChange={(event) => setUserWeight(Math.abs(Math.trunc(event.currentTarget.value)))}
                                     />
                                     {userWeight === '' ? <FormErrorMessage>User weight is required.</FormErrorMessage> : ''}

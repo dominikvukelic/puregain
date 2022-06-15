@@ -15,7 +15,7 @@ import DatePickerComponent from './DatePicker';
 import { useNavigate } from 'react-router-dom';
 import TrainingPage from '../pages/TrainingPage';
 
-function PopUpConfirmDelete() {
+function PopUpConfirmDeleteTraining() {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [trainingName, setTrainingName] = useState('');
 
@@ -26,10 +26,10 @@ function PopUpConfirmDelete() {
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader>Do you want to delete this exercise?</ModalHeader>
+                    <ModalHeader>Do you want to delete this training from training history?</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                        <p>Are you sure you want to delete this exercise?</p>
+                        <p>Are you sure you want to delete this training from training history?</p>
                     </ModalBody>
 
                     <ModalFooter>
@@ -43,4 +43,4 @@ function PopUpConfirmDelete() {
         </>
     );
 }
-export default PopUpConfirmDelete;
+export default PopUpConfirmDeleteTraining;
