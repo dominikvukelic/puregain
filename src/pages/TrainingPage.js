@@ -49,8 +49,6 @@ function TrainingPage() {
         setburnedCalories((trainingDurationtemp / 60) * (6 * userData.userWeight));
     }, [trainingDurationtemp, userData]);
 
-    console.log(userData);
-
     const handleEditExercise = (index, newData) => {
         const exerciseForTrainingtemp = exerciseForTraining.slice();
         exerciseForTrainingtemp[index] = newData;
@@ -118,7 +116,7 @@ function TrainingPage() {
                             <h3>{liftedWeight} kilos</h3>
                             <p>Burned Calories</p>
                             <h3>{burnedCalories} kcal</h3>
-                            console.log(burnedCalories);
+
                             <Button colorScheme="teal" onClick={insertTrainingIntoFirebase}>
                                 Finish training
                             </Button>

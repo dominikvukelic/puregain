@@ -17,17 +17,13 @@ export default function App() {
     const auth = getAuth();
     const [oldUser, setOldUser] = useState(false);
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
     onAuthStateChanged(auth, (user) => {
         if (user && user !== oldUser) {
-            user.getIdTokenResult().then((idTokenResult) => {
-                setIsLoggedIn(true);
+            user.getIdTokenResult().then(() => {
                 setOldUser(user);
             });
-        } else {
-            setIsLoggedIn(false);
         }
         setIsLoading(false);
     });
