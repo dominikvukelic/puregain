@@ -24,7 +24,6 @@ function UserInfo() {
 
     const [userData, setuserData] = useState('');
 
-    const [message, setMessage] = useState('');
     const [optimalweight, setoptimalweight] = useState('');
     const [bmi, setBMI] = useState('');
     const [piechartdata, setpiechartdata] = useState([]);
@@ -44,24 +43,14 @@ function UserInfo() {
             let fatMasstemp = 0;
             let muscleMasstemp = 0;
 
-            if (bmi >= 18.5 && bmi <= 24.99) {
-                setMessage('You are in a healthy weight range');
-            } else if (bmi >= 25 && bmi <= 29.9) {
-                setMessage('You are overweight');
-            } else if (bmi >= 30) {
-                setMessage('You are obese');
-            } else if (bmi < 18.5) {
-                setMessage('You are under weight');
-            }
-
             setoptimalweight('Your suggested weight is between ' + low + ' and ' + high + ' kilos');
 
             if (data.gender === 'male') {
-                fatMasstemp = Math.floor(0.3281 * data.userWeight + 0.33929 * data.height - 29.5336);
-                muscleMasstemp = 100 - fatMasstemp;
+                muscleMasstemp = Math.floor(0.3281 * data.userWeight + 0.33929 * data.height - 29.5336);
+                fatMasstemp = 100 - muscleMasstemp;
             } else {
-                fatMasstemp = Math.floor(0.29569 * data.userWeight + 0.41813 * data.height - 43.2933);
-                muscleMasstemp = 100 - fatMasstemp;
+                muscleMasstemp = Math.floor(0.29569 * data.userWeight + 0.41813 * data.height - 43.2933);
+                fatMasstemp = 100 - muscleMasstemp;
             }
 
             setpiechartdata([
@@ -98,7 +87,7 @@ function UserInfo() {
                             <Heading as="h4" size="md">
                                 Body Mass Index data
                             </Heading>
-                            <Box>{message}</Box>
+
                             <Box>{optimalweight}</Box>
                             <Box>Your BMI is: {bmi}</Box>
                         </Box>

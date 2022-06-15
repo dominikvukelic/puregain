@@ -54,7 +54,7 @@ function PopUpEditExercise({ handleEditExercise, exercise, editIndex }) {
                 <Modal isOpen={isOpen} onClose={onClose}>
                     <ModalOverlay />
                     <ModalContent>
-                        <ModalHeader>Edit user info</ModalHeader>
+                        <ModalHeader>Edit exercise</ModalHeader>
                         <ModalCloseButton />
                         <ModalBody>
                             <Stack direction={['column']} spacing={1}>
