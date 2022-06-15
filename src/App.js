@@ -32,8 +32,6 @@ export default function App() {
         setIsLoading(false);
     });
 
-    
-
     return isLoading ? (
         <></>
     ) : (
@@ -46,8 +44,8 @@ export default function App() {
                     <Routes>
                         <Route exact path="/" element={<PopUpTraining />} />
                         <Route exact path="/trainingpage" element={<TrainingPage />} />
-                        <Route exact path="/userinfo" element={auth.currentUser? <UserInfo /> : <Login/>} />
-                        <Route exact path="/traininghistory" element={auth.currentUser?  <TrainingHistory /> : <Login/>} />
+                        <Route exact path="/userinfo" element={auth.currentUser ? <UserInfo /> : <Login />} />
+                        <Route exact path="/traininghistory" element={auth.currentUser ? <TrainingHistory /> : <Login />} />
                         <Route exact path="/register" element={<Register />} />
                         <Route exact path="/login" element={<Login />} />
                     </Routes>

@@ -19,67 +19,38 @@ import {
     NumberInputStepper,
     NumberDecrementStepper,
     FormControl,
-    FormErrorMessage,
-    Radio,
-    RadioGroup,
-    Box,
     IconButton,
 } from '@chakra-ui/react';
-import { nanoid } from 'nanoid';
+
 import { getAuth } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { PencilIcon } from '@primer/octicons-react';
 
-import { collection, getDocs, where, query, updateDoc } from 'firebase/firestore';
-import database from '../FirebaseConfig';
-
-export const handleUpdateDataF = async (data, email) => {
-    try {
-        const first = query(collection(database, 'users'), where('email', '==', email));
-        const queryRef = await getDocs(first);
-        queryRef.forEach((doc) => {
-            updateDoc(doc, { ...data });
-        });
-
-        console.log('Document updated.');
-    } catch (e) {
-        console.error('Error updating document: ', e);
-    }
-};
-
-function PopUpEditExercise({ userData }) {
+function PopUpEditExercise({ handleEditExercise, exercise, editIndex }) {
     const auth = getAuth();
     const navigate = useNavigate();
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const [exerciseName, setexerciseName] = useState('');
-    const [reps, setReps] = useState('');
-    const [weight, setWeight] = useState('');
+    const [exerciseName, setexerciseName] = useState(exercise.exerciseName);
+    const [reps, setReps] = useState(exercise.reps);
+    const [weight, setWeight] = useState(exercise.weight);
 
-    const handleEditUserInfo = (event) => {
+    const handleEditExerciseMain = (event) => {
         event.preventDefault();
-        const ExerciseData = { exerciseName: exerciseName, reps: reps, weight: weight, id: nanoid() };
-        handleUpdateDataF(data, auth.currentUser.email);
+        const newData = { exerciseName: exerciseName, id: exercise.id, reps: reps, weight: weight };
 
+        handleEditExercise(editIndex, newData);
         onClose();
     };
+    console.log(exercise);
 
-    console.log(userData);
     if (!auth.currentUser) {
         navigate('/login');
     } else {
         return (
             <>
-                <Box onClick={onOpen} colorScheme="teal">
-                    <IconButton
-                        aria-label="Edit user data"
-                        icon={<PencilIcon />}
-                        className="item-edit-btn"
-                        /* onClick={() => handleEdit(id)} */
-                        mb="5px"
-                    >
-                        Edit user data
-                    </IconButton>
-                </Box>
+                <IconButton aria-label="Edit exercise" icon={<PencilIcon />} className="item-edit-btn" mb="5px" onClick={onOpen}>
+                    Edit user data
+                </IconButton>
 
                 <Modal isOpen={isOpen} onClose={onClose}>
                     <ModalOverlay />
@@ -88,7 +59,7 @@ function PopUpEditExercise({ userData }) {
                         <ModalCloseButton />
                         <ModalBody>
                             <Stack direction={['column']} spacing={1}>
-                                <form onSubmit={handleAddExercise} id="addexercisepopup">
+                                <form onSubmit={handleEditExerciseMain} id="edituserinfo">
                                     <FormControl isRequired isInvalid={exerciseName === ''}>
                                         <FormLabel>Exercise name</FormLabel>
                                         <Input
@@ -102,13 +73,12 @@ function PopUpEditExercise({ userData }) {
                                     </FormControl>
                                     <FormControl isRequired isInvalid={weight === ''}>
                                         <FormLabel>Weight </FormLabel>
-                                        <NumberInput min="1">
+                                        <NumberInput min="1" defaultValue={weight}>
                                             <NumberInputField
                                                 style={{ height: '48px' }}
                                                 type="number"
                                                 placeholder="weight"
                                                 size="lg"
-                                                value={weight}
                                                 onChange={(event) => setWeight(Math.abs(Math.trunc(event.currentTarget.value)))}
                                             />
                                             <NumberInputStepper>
@@ -119,13 +89,12 @@ function PopUpEditExercise({ userData }) {
                                     </FormControl>
                                     <FormControl isRequired isInvalid={reps === ''}>
                                         <FormLabel>Reps </FormLabel>
-                                        <NumberInput min="1">
+                                        <NumberInput min="1" defaultValue={reps}>
                                             <NumberInputField
                                                 style={{ height: '48px' }}
                                                 type="number"
                                                 placeholder="reps"
                                                 size="lg"
-                                                value={reps}
                                                 onChange={(event) => setReps(Math.abs(Math.trunc(event.currentTarget.value)))}
                                             />
                                             <NumberInputStepper>
@@ -139,7 +108,7 @@ function PopUpEditExercise({ userData }) {
                         </ModalBody>
 
                         <ModalFooter>
-                            <Button colorScheme="teal" onClick={handleEditUserInfo} type="submit" form="edituserinfo">
+                            <Button colorScheme="teal" type="submit" form="edituserinfo">
                                 Confirm
                             </Button>
                             <Button colorScheme="red" ml={3} onClick={onClose}>

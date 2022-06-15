@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, memo } from 'react';
 import { Button, Box, Stack, Grid, GridItem, Divider, List, Heading } from '@chakra-ui/react';
 import './TrainingPage.css';
 import OneExercise from '../components/OneExercise';
@@ -8,10 +8,8 @@ import { useNavigate } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import database from '../FirebaseConfig';
-/* import { getUserInfo } from './UserInfo'; */
 
 function TrainingPage() {
-    //user info
     const getUserInfo = async () => {
         try {
             const first = query(collection(database, 'users'), where('email', '==', email));
@@ -34,7 +32,7 @@ function TrainingPage() {
 
     const [exerciseForTraining, setexerciseForTraining] = useState([]);
     const [liftedWeight, setliftedWeight] = useState(0);
-    const [burnedCalories, setburnedCalories] = useState(0); //ovo mijenjat
+    const [burnedCalories, setburnedCalories] = useState(0);
 
     const addExerciseForTraining = (data) => {
         setexerciseForTraining([...exerciseForTraining, data]);
@@ -44,10 +42,6 @@ function TrainingPage() {
         setexerciseForTraining([...exerciseForTraining.filter((e) => e.id !== id)]);
     };
 
-    /*  
-        //dodat za edit i dodat popup
-    }; */
-
     useEffect(() => {
         setliftedWeight(exerciseForTraining.reduce((sum, t) => sum + t.weight * t.reps, 0));
     }, [exerciseForTraining]);
@@ -56,6 +50,12 @@ function TrainingPage() {
     }, [trainingDurationtemp, userData]);
 
     console.log(userData);
+
+    const handleEditExercise = (index, newData) => {
+        const exerciseForTrainingtemp = exerciseForTraining.slice();
+        exerciseForTrainingtemp[index] = newData;
+        setexerciseForTraining(exerciseForTrainingtemp);
+    };
 
     const insertTrainingIntoFirebase = () => {
         const trainingTempdata = {
@@ -98,13 +98,13 @@ function TrainingPage() {
                 </Grid>
                 <Divider orientation="horizontal" />
                 <List spacing={3} mr="5px" ml="5px">
-                    {exerciseForTraining.map((e) => (
+                    {exerciseForTraining.map((e, index) => (
                         <OneExercise
-                            exercisename={e.exerciseName}
-                            weight={e.weight}
-                            reps={e.reps}
+                            exercise={e}
                             id={e.id}
                             handleDelete={deleteExerciseFromTraining}
+                            handleEditExercise={handleEditExercise}
+                            editIndex={index}
                         />
                     ))}
                 </List>
@@ -130,4 +130,4 @@ function TrainingPage() {
     }
 }
 
-export default TrainingPage;
+export default memo(TrainingPage);

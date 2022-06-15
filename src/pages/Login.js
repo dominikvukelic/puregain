@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { EyeIcon, EyeClosedIcon, LockIcon, MentionIcon } from '@primer/octicons-react';
 import {
     Flex,
@@ -17,11 +17,9 @@ import {
     AlertDescription,
 } from '@chakra-ui/react';
 import { Link, useNavigate } from 'react-router-dom';
-import { TrainingContext } from '../context/TrainingContext';
 import { signInWithEmailAndPassword, getAuth } from 'firebase/auth';
 
 export default function Login() {
-    const { trainingData, addUser } = useContext(TrainingContext);
     const navigate = useNavigate();
 
     const auth = getAuth();

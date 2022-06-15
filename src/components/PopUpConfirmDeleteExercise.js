@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import {
     Modal,
@@ -10,18 +10,24 @@ import {
     ModalCloseButton,
     Button,
     useDisclosure,
+    IconButton,
 } from '@chakra-ui/react';
-import DatePickerComponent from './DatePicker';
-import { useNavigate } from 'react-router-dom';
-import TrainingPage from '../pages/TrainingPage';
 
-function PopUpConfirmDeleteExercise() {
+import { TrashIcon } from '@primer/octicons-react';
+
+function PopUpConfirmDeleteExercise({ handleDelete }) {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const [trainingName, setTrainingName] = useState('');
+
+    const handleConfirmDelete = () => {
+        handleDelete();
+        onClose();
+    };
 
     return (
         <>
-            <Button onClick={onOpen}></Button>
+            <IconButton aria-label="Delete" icon={<TrashIcon />} className="item-delete-btn" onClick={onOpen} mb="5px">
+                Delete
+            </IconButton>
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
@@ -33,8 +39,11 @@ function PopUpConfirmDeleteExercise() {
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button colorScheme="blue" /* onClick={handleOpenTraining} */> Confirm</Button>
-                        <Button variant="ghost" mr={3} onClick={onClose}>
+                        <Button colorScheme="blue" onClick={handleConfirmDelete}>
+                            {' '}
+                            Confirm
+                        </Button>
+                        <Button colorScheme="red" ml={3} onClick={onClose}>
                             Cancel
                         </Button>
                     </ModalFooter>

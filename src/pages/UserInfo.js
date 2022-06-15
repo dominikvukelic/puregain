@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Stack, StackDivider, IconButton, Box, Heading, Flex } from '@chakra-ui/react';
-import { PencilIcon } from '@primer/octicons-react';
+import { Stack, StackDivider, Box, Heading, Flex } from '@chakra-ui/react';
+
 import { getAuth } from 'firebase/auth';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import database from '../FirebaseConfig';
@@ -19,7 +19,7 @@ const getUserInfo = async (setuserData, auth) => {
     }
 };
 
-function UserInfo(/* handleEdit napravit novi */) {
+function UserInfo() {
     const auth = getAuth();
 
     const [userData, setuserData] = useState('');

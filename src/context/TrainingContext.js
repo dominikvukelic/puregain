@@ -1,6 +1,6 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, createContext } from 'react';
 
-import { collection, getDocs, addDoc, where, query } from 'firebase/firestore';
+import { collection, getDocs, addDoc, where, query, deleteDoc, doc } from 'firebase/firestore';
 import database from '../FirebaseConfig';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
@@ -12,6 +12,15 @@ export const addUser = async (data, direction, state, setState) => {
         await addDoc(collection(database, direction), { ...data });
     } catch (e) {
         console.error('Error adding data to the database: ', e);
+    }
+};
+
+export const deleteTraining = async (id, state, setState) => {
+    try {
+        await deleteDoc(doc(database, 'trainings', id));
+        setState([...state.filter((training) => training.id !== id)]);
+    } catch (e) {
+        console.error(e);
     }
 };
 
@@ -55,6 +64,10 @@ export function TrainingProvider({ children }) {
         getTraining('trainings', setTrainingData, user.uid);
     });
 
+    const handleDeleteTraining = (id) => {
+        deleteTraining(id, trainingData, setTrainingData);
+    };
+
     return (
         <TrainingContext.Provider
             value={{
@@ -67,6 +80,7 @@ export function TrainingProvider({ children }) {
                 addUser,
                 trainingDurationtemp,
                 setTrainingDurationtemp,
+                handleDeleteTraining,
             }}
         >
             {children}

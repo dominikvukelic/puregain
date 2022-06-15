@@ -1,9 +1,10 @@
 import React from 'react';
-import { IconButton, Grid, GridItem, ListItem, Divider, Box, Flex, HStack } from '@chakra-ui/react';
-import { TrashIcon, PencilIcon } from '@primer/octicons-react';
+import { Grid, GridItem, ListItem, Divider, Box, Flex, HStack } from '@chakra-ui/react';
 import './OneExercise.css';
+import PopUpConfirmDeleteExercise from './PopUpConfirmDeleteExercise';
+import PopUpEditExercise from './PopUpEditExercise';
 
-function OneExercise({ exercisename, weight, reps, handleDelete, id, handleEdit }) {
+function OneExercise({ exercise, handleDelete, id, handleEditExercise, editIndex }) {
     return (
         <>
             <ListItem fontSize="xs">
@@ -11,46 +12,30 @@ function OneExercise({ exercisename, weight, reps, handleDelete, id, handleEdit 
                     <GridItem w="100%" h="30px">
                         <p>Exercise name</p>
                         <Divider orientation="horizontal" />
-                        <h3>{exercisename}</h3>
+                        <h3>{exercise.exerciseName}</h3>
                     </GridItem>
                     <GridItem w="100%">
                         <p>Weight in kilos</p>
                         <Divider orientation="horizontal" />
-                        <h3>{weight}</h3>
+                        <h3>{exercise.weight}</h3>
                     </GridItem>
                     <GridItem w="100%">
                         <p>Number of reps</p>
                         <Divider orientation="horizontal" />
-                        <h3>{reps}</h3>
+                        <h3>{exercise.reps}</h3>
                     </GridItem>
 
                     <GridItem w="20%">
                         <HStack spacing="10px">
                             <Box>
                                 <p className="button-text">Edit</p>
-                                <IconButton
-                                    aria-label="Edit"
-                                    icon={<PencilIcon />}
-                                    className="item-edit-btn"
-                                    onClick={() => handleEdit(id)}
-                                    mb="5px"
-                                >
-                                    Edit
-                                </IconButton>
+                                <PopUpEditExercise exercise={exercise} handleEditExercise={handleEditExercise} editIndex={editIndex} />
                             </Box>
                             <Flex>
                                 <Box>
                                     <p className="button-text">Delete</p>
 
-                                    <IconButton
-                                        aria-label="Delete"
-                                        icon={<TrashIcon />}
-                                        className="item-delete-btn"
-                                        onClick={() => handleDelete(id)}
-                                        mb="5px"
-                                    >
-                                        Delete
-                                    </IconButton>
+                                    <PopUpConfirmDeleteExercise handleDelete={() => handleDelete(id)} />
                                 </Box>
                             </Flex>
                         </HStack>

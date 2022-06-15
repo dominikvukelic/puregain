@@ -83,7 +83,7 @@ export default function Register() {
                                 />
                                 {name === '' ? <FormErrorMessage>Name is required.</FormErrorMessage> : ''}
                             </FormControl>
-                            <FormControl isRequired isInvalid="Enter data into field">
+                            <FormControl isRequired isInvalid={surname === ''}>
                                 <FormLabel>Surname</FormLabel>
                                 <Input
                                     type="text"
