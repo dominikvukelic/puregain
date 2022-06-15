@@ -39,10 +39,8 @@ export const handleUpdateDataF = async (data, email) => {
         queryRef.forEach((docA) => {
             updateDoc(doc(database, 'users', docA.id), { ...data });
         });
-
-        console.log('Document updated.');
     } catch (e) {
-        console.error('Error updating document: ', e);
+        console.error(e);
     }
 };
 
@@ -76,7 +74,6 @@ function PopUpEditUserInfo({ userData }) {
         onClose();
     };
 
-    console.log(userData);
     if (!auth.currentUser) {
         navigate('/login');
     } else {

@@ -41,7 +41,6 @@ function PopUpEditExercise({ handleEditExercise, exercise, editIndex }) {
         handleEditExercise(editIndex, newData);
         onClose();
     };
-    console.log(exercise);
 
     if (!auth.currentUser) {
         navigate('/login');

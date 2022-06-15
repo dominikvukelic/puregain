@@ -11,7 +11,7 @@ export const addUser = async (data, direction, state, setState) => {
     try {
         await addDoc(collection(database, direction), { ...data });
     } catch (e) {
-        console.error('Error adding data to the database: ', e);
+        console.error(e);
     }
 };
 
@@ -37,7 +37,7 @@ export const addTraining = async (data, direction, state, setState) => {
     try {
         await addDoc(collection(database, direction), { ...data });
     } catch (e) {
-        console.error('Error adding data to the database: ', e);
+        console.error(e);
     }
 };
 

@@ -12,7 +12,7 @@ const getUserInfo = async (setuserData, auth) => {
         const first = query(collection(database, 'users'), where('email', '==', auth.currentUser.email));
         const documentSnapshot = await getDocs(first);
         setuserData(documentSnapshot.docs[0].data());
-        console.log('muscleMass');
+
         return documentSnapshot.docs[0].data();
     } catch (e) {
         console.log(e);
@@ -70,8 +70,6 @@ function UserInfo() {
             ]);
         });
     }, []);
-
-    console.log('muscleMass');
 
     return (
         <Flex width="full" align="center" justifyContent="center">
