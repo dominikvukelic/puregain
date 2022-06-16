@@ -39,7 +39,7 @@ function PopUpConfirmDeleteExercise({ handleDelete }) {
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button colorScheme="blue" onClick={handleConfirmDelete}>
+                        <Button colorScheme="teal" onClick={handleConfirmDelete}>
                             {' '}
                             Confirm
                         </Button>

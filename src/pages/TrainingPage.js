@@ -116,7 +116,7 @@ function TrainingPage() {
                             <h3>{liftedWeight} kilos</h3>
                             <p>Burned Calories</p>
                             <h3>{burnedCalories} kcal</h3>
-
+                            console.log(burnedCalories)
                             <Button colorScheme="teal" onClick={insertTrainingIntoFirebase}>
                                 Finish training
                             </Button>

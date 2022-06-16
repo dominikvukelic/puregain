@@ -113,7 +113,7 @@ function PopUpTraining() {
                         </ModalBody>
 
                         <ModalFooter>
-                            <Button colorScheme="blue" type="submit" form="popuptrainingform">
+                            <Button colorScheme="teal" type="submit" form="popuptrainingform">
                                 {' '}
                                 Confirm
                             </Button>
