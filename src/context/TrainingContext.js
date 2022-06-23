@@ -7,7 +7,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 export const TrainingContext = createContext();
 const auth = getAuth();
 
-export const addUser = async (data, direction, state, setState) => {
+export const addUser = async (data, direction) => {
     try {
         await addDoc(collection(database, direction), { ...data });
     } catch (e) {
@@ -33,7 +33,7 @@ const getExercisesDoneDuringTraining = async (idTreninga) => {
     });
     return ExercisesDoneDuringTraining;
 };
-export const addTraining = async (data, direction, state, setState) => {
+export const addTraining = async (data, direction) => {
     try {
         await addDoc(collection(database, direction), { ...data });
     } catch (e) {
