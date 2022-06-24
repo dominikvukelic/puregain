@@ -38,7 +38,7 @@ export default function App() {
 
                 <div className="routes-wrapper">
                     <Routes>
-                        <Route exact path="/" element={<PopUpTraining />} />
+                        <Route exact path="/" element={auth.currentUser ? <PopUpTraining /> : <Login />} />
                         <Route exact path="/trainingpage" element={<TrainingPage />} />
                         <Route exact path="/userinfo" element={auth.currentUser ? <UserInfo /> : <Login />} />
                         <Route exact path="/traininghistory" element={auth.currentUser ? <TrainingHistory /> : <Login />} />
