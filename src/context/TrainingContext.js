@@ -59,9 +59,17 @@ export function TrainingProvider({ children }) {
     const [date, setDate] = useState(new Date());
     const [trainingNametemp, setTrainingNametemp] = useState('');
     const [trainingDurationtemp, setTrainingDurationtemp] = useState('');
+    const [user, setUser] = useState();
 
-    onAuthStateChanged(auth, (user) => {
-        getTraining('trainings', setTrainingData, user.uid);
+    onAuthStateChanged(auth, (usertemp) => {
+        if (usertemp && usertemp !== user) {
+            usertemp.getIdTokenResult().then(() => {
+                setUser(usertemp);
+            });
+        } else if (!usertemp) {
+            setUser(undefined);
+        }
+        getTraining('trainings', setTrainingData, usertemp.uid);
     });
 
     const handleDeleteTraining = (id) => {
@@ -81,6 +89,7 @@ export function TrainingProvider({ children }) {
                 trainingDurationtemp,
                 setTrainingDurationtemp,
                 handleDeleteTraining,
+                user,
             }}
         >
             {children}

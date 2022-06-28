@@ -46,7 +46,7 @@ function TrainingPage() {
         setliftedWeight(exerciseForTraining.reduce((sum, t) => sum + t.weight * t.reps, 0));
     }, [exerciseForTraining]);
     useEffect(() => {
-        setburnedCalories((trainingDurationtemp / 60) * (6 * userData.userWeight));
+        setburnedCalories(Math.trunc((trainingDurationtemp / 60) * (6 * userData.userWeight)));
     }, [trainingDurationtemp, userData]);
 
     const handleEditExercise = (index, newData) => {

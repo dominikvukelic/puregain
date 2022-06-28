@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { ThemeProvider, theme, CSSReset } from '@chakra-ui/react';
 
 import Login from './pages/Login';
@@ -12,25 +12,16 @@ import './App.css';
 import UserInfo from './pages/UserInfo';
 import TrainingHistory from './pages/TrainingHistory';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { TrainingContext } from './context/TrainingContext';
 
 export default function App() {
     const auth = getAuth();
-    const [oldUser, setOldUser] = useState(false);
+
+    const { user } = useContext(TrainingContext);
 
     const [isLoading, setIsLoading] = useState(true);
 
-    onAuthStateChanged(auth, (user) => {
-        if (user && user !== oldUser) {
-            user.getIdTokenResult().then(() => {
-                setOldUser(user);
-            });
-        }
-        setIsLoading(false);
-    });
-
-    return isLoading ? (
-        <></>
-    ) : (
+    return (
         <>
             {' '}
             <ThemeProvider theme={theme}>
@@ -38,10 +29,10 @@ export default function App() {
 
                 <div className="routes-wrapper">
                     <Routes>
-                        <Route exact path="/" element={auth.currentUser ? <PopUpTraining /> : <Login />} />
+                        <Route exact path="/" element={user ? <PopUpTraining /> : <Login />} />
                         <Route exact path="/trainingpage" element={<TrainingPage />} />
-                        <Route exact path="/userinfo" element={auth.currentUser ? <UserInfo /> : <Login />} />
-                        <Route exact path="/traininghistory" element={auth.currentUser ? <TrainingHistory /> : <Login />} />
+                        <Route exact path="/userinfo" element={user ? <UserInfo /> : <Login />} />
+                        <Route exact path="/traininghistory" element={user ? <TrainingHistory /> : <Login />} />
                         <Route exact path="/register" element={<Register />} />
                         <Route exact path="/login" element={<Login />} />
                     </Routes>
