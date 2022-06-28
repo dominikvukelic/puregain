@@ -1,25 +1,18 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { ThemeProvider, theme, CSSReset } from '@chakra-ui/react';
-
 import Login from './pages/Login';
 import Register from './pages/Register';
 import NavBar from './pages/NavBar';
-
 import TrainingPage from './pages/TrainingPage';
 import { Routes, Route } from 'react-router-dom';
 import PopUpTraining from './components/PopUpTraining';
 import './App.css';
 import UserInfo from './pages/UserInfo';
 import TrainingHistory from './pages/TrainingHistory';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { TrainingContext } from './context/TrainingContext';
 
 export default function App() {
-    const auth = getAuth();
-
     const { user } = useContext(TrainingContext);
-
-    const [isLoading, setIsLoading] = useState(true);
 
     return (
         <>
