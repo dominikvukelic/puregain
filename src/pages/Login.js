@@ -29,7 +29,6 @@ export default function Login() {
     const [showPassword, setShowPassword] = useState(false);
 
     const handleLogin = async () => {
-        console.log('login');
         signInWithEmailAndPassword(auth, email, password)
             .then(() => {
                 navigate('/');
