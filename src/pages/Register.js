@@ -55,7 +55,7 @@ export default function Register() {
                     username: username,
                 };
                 await addUser(data, 'users');
-                navigate('/login');
+                navigate('/');
             })
             .catch((error) => {
                 console.log(error);
