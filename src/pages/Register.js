@@ -107,7 +107,7 @@ export default function Register() {
                                 <FormLabel>Email</FormLabel>
                                 <Input
                                     type="email"
-                                    placeholder="neki@mail.com"
+                                    placeholder="some@mail.com"
                                     size="lg"
                                     onChange={(event) => setEmail(event.currentTarget.value)}
                                 />
@@ -161,7 +161,7 @@ export default function Register() {
                                 <NumberInput min="1">
                                     <NumberInputField
                                         type="number"
-                                        placeholder="height"
+                                        placeholder="user height"
                                         size="lg"
                                         onChange={(event) => setHeight(Math.abs(Math.trunc(event.currentTarget.value)))}
                                     />

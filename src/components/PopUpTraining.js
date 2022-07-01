@@ -76,7 +76,7 @@ function PopUpTraining() {
                                             <Input
                                                 style={{ height: '48px' }}
                                                 type="text"
-                                                placeholder="training-name"
+                                                placeholder="training name"
                                                 size="lg"
                                                 value={trainingName}
                                                 onChange={(event) => setTrainingName(event.currentTarget.value)}
@@ -94,7 +94,7 @@ function PopUpTraining() {
                                                 <NumberInputField
                                                     style={{ height: '48px' }}
                                                     type="number"
-                                                    placeholder="training-duration"
+                                                    placeholder="training duration"
                                                     size="lg"
                                                     value={trainingDurationtemp}
                                                     onChange={(event) =>

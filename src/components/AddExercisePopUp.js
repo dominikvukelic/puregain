@@ -63,7 +63,7 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
                                         <Input
                                             style={{ height: '48px' }}
                                             type="text"
-                                            placeholder="exercise-name"
+                                            placeholder="exercise name"
                                             size="lg"
                                             value={exerciseName}
                                             onChange={(event) => setexerciseName(event.currentTarget.value)}
