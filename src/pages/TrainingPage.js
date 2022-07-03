@@ -112,7 +112,7 @@ function TrainingPage() {
                     </GridItem>
                     <GridItem colStart={4} colEnd={6}>
                         <Stack spacing={2}>
-                            <p>Total lifed weight</p>
+                            <p>Total lifted weight</p>
                             <h3>{liftedWeight} kilos</h3>
                             <p>Burned Calories</p>
                             <h3>{burnedCalories} kcal</h3>

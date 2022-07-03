@@ -21,9 +21,7 @@ const getUserInfo = async (setuserData, auth) => {
 
 function UserInfo() {
     const auth = getAuth();
-
     const [userData, setuserData] = useState('');
-
     const [optimalweight, setoptimalweight] = useState('');
     const [bmi, setBMI] = useState('');
     const [piechartdata, setpiechartdata] = useState([]);
