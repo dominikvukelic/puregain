@@ -189,7 +189,7 @@ function PopUpEditUserInfo({ userData }) {
                         </ModalBody>
 
                         <ModalFooter>
-                            <Button colorScheme="teal" onClick={handleEditUserInfo} type="submit" form="edituserinfo">
+                            <Button colorScheme="teal" type="submit" form="edituserinfo">
                                 Confirm
                             </Button>
                             <Button colorScheme="red" ml={3} onClick={onClose}>
