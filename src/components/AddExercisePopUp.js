@@ -77,7 +77,6 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
                                                 type="number"
                                                 placeholder="weight"
                                                 size="lg"
-                                                value={weight}
                                                 onChange={(event) => setWeight(Math.abs(Math.trunc(event.currentTarget.value)))}
                                             />
                                             <NumberInputStepper>
@@ -94,7 +93,6 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
                                                 type="number"
                                                 placeholder="reps"
                                                 size="lg"
-                                                value={reps}
                                                 onChange={(event) => setReps(Math.abs(Math.trunc(event.currentTarget.value)))}
                                             />
                                             <NumberInputStepper>
@@ -108,7 +106,7 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
                         </ModalBody>
 
                         <ModalFooter>
-                            <Button colorScheme="teal" onClick={handleAddExercise} type="submit" form="addexercisepopup">
+                            <Button colorScheme="teal" type="submit" form="addexercisepopup">
                                 Confirm
                             </Button>
                             <Button colorScheme="red" ml={3} onClick={onClose}>
