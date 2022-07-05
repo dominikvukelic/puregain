@@ -90,13 +90,14 @@ function PopUpTraining() {
                                     <FormControl isRequired isInvalid="Enter data into field">
                                         <FormLabel>Training duration - in minutes</FormLabel>
                                         <InputGroup step={1} min={1}>
-                                            <NumberInput min="1">
+                                            <NumberInput>
                                                 <NumberInputField
                                                     style={{ height: '48px' }}
                                                     type="number"
                                                     placeholder="training duration"
                                                     size="lg"
                                                     value={trainingDurationtemp}
+                                                    min="1"
                                                     onChange={(event) =>
                                                         setTrainingDurationtemp(Math.abs(Math.trunc(event.currentTarget.value)))
                                                     }

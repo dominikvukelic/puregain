@@ -138,11 +138,12 @@ function PopUpEditUserInfo({ userData }) {
                                     </FormControl>
                                     <FormControl isRequired isInvalid={age === ''}>
                                         <FormLabel>Age</FormLabel>
-                                        <NumberInput min="1" defaultValue={age}>
+                                        <NumberInput defaultValue={age}>
                                             <NumberInputField
                                                 type="number"
                                                 placeholder="age"
                                                 size="lg"
+                                                min="1"
                                                 onChange={(event) => setAge(Math.abs(Math.trunc(event.currentTarget.value)))}
                                             />
                                             {age === '' ? <FormErrorMessage>Age is required.</FormErrorMessage> : ''}
@@ -154,11 +155,12 @@ function PopUpEditUserInfo({ userData }) {
                                     </FormControl>
                                     <FormControl isRequired isInvalid={height === ''}>
                                         <FormLabel>Height - in centimeters</FormLabel>
-                                        <NumberInput min="1" defaultValue={height}>
+                                        <NumberInput defaultValue={height}>
                                             <NumberInputField
                                                 type="number"
                                                 placeholder="height"
                                                 size="lg"
+                                                min="1"
                                                 onChange={(event) => setHeight(Math.abs(Math.trunc(event.currentTarget.value)))}
                                             />
                                             {height === '' ? <FormErrorMessage>Height is required.</FormErrorMessage> : ''}
@@ -170,11 +172,12 @@ function PopUpEditUserInfo({ userData }) {
                                     </FormControl>
                                     <FormControl isRequired isInvalid={userWeight === ''}>
                                         <FormLabel>Weight - in kilos</FormLabel>
-                                        <NumberInput min="1" defaultValue={userWeight}>
+                                        <NumberInput defaultValue={userWeight}>
                                             <NumberInputField
                                                 type="number"
                                                 placeholder="user weight"
                                                 size="lg"
+                                                min="1"
                                                 onChange={(event) => setUserWeight(Math.abs(Math.trunc(event.currentTarget.value)))}
                                             />
                                             {userWeight === '' ? <FormErrorMessage>User weight is required.</FormErrorMessage> : ''}

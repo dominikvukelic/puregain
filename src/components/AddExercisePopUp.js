@@ -71,12 +71,13 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
                                     </FormControl>
                                     <FormControl isRequired isInvalid={weight === ''}>
                                         <FormLabel>Weight </FormLabel>
-                                        <NumberInput min="1">
+                                        <NumberInput>
                                             <NumberInputField
                                                 style={{ height: '48px' }}
                                                 type="number"
                                                 placeholder="weight"
                                                 size="lg"
+                                                min="1"
                                                 onChange={(event) => setWeight(Math.abs(Math.trunc(event.currentTarget.value)))}
                                             />
                                             <NumberInputStepper>
@@ -87,12 +88,13 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
                                     </FormControl>
                                     <FormControl isRequired isInvalid={reps === ''}>
                                         <FormLabel>Reps </FormLabel>
-                                        <NumberInput min="1">
+                                        <NumberInput>
                                             <NumberInputField
                                                 style={{ height: '48px' }}
                                                 type="number"
                                                 placeholder="reps"
                                                 size="lg"
+                                                min="1"
                                                 onChange={(event) => setReps(Math.abs(Math.trunc(event.currentTarget.value)))}
                                             />
                                             <NumberInputStepper>
