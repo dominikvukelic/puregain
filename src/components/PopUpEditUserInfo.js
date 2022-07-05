@@ -24,6 +24,7 @@ import {
     RadioGroup,
     Box,
     IconButton,
+    InputGroup,
 } from '@chakra-ui/react';
 import { getAuth } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
@@ -138,54 +139,60 @@ function PopUpEditUserInfo({ userData }) {
                                     </FormControl>
                                     <FormControl isRequired isInvalid={age === ''}>
                                         <FormLabel>Age</FormLabel>
-                                        <NumberInput defaultValue={age}>
-                                            <NumberInputField
-                                                type="number"
-                                                placeholder="age"
-                                                size="lg"
-                                                min="1"
-                                                onChange={(event) => setAge(Math.abs(Math.trunc(event.currentTarget.value)))}
-                                            />
-                                            {age === '' ? <FormErrorMessage>Age is required.</FormErrorMessage> : ''}
-                                            <NumberInputStepper>
-                                                <NumberIncrementStepper />
-                                                <NumberDecrementStepper />
-                                            </NumberInputStepper>
-                                        </NumberInput>
+                                        <InputGroup step={1} min={1}>
+                                            <NumberInput defaultValue={age}>
+                                                <NumberInputField
+                                                    type="number"
+                                                    placeholder="age"
+                                                    size="lg"
+                                                    min="1"
+                                                    onChange={(event) => setAge(Math.abs(Math.trunc(event.currentTarget.value)))}
+                                                />
+                                                {age === '' ? <FormErrorMessage>Age is required.</FormErrorMessage> : ''}
+                                                <NumberInputStepper>
+                                                    <NumberIncrementStepper />
+                                                    <NumberDecrementStepper />
+                                                </NumberInputStepper>
+                                            </NumberInput>
+                                        </InputGroup>
                                     </FormControl>
                                     <FormControl isRequired isInvalid={height === ''}>
                                         <FormLabel>Height - in centimeters</FormLabel>
-                                        <NumberInput defaultValue={height}>
-                                            <NumberInputField
-                                                type="number"
-                                                placeholder="height"
-                                                size="lg"
-                                                min="1"
-                                                onChange={(event) => setHeight(Math.abs(Math.trunc(event.currentTarget.value)))}
-                                            />
-                                            {height === '' ? <FormErrorMessage>Height is required.</FormErrorMessage> : ''}
-                                            <NumberInputStepper>
-                                                <NumberIncrementStepper />
-                                                <NumberDecrementStepper />
-                                            </NumberInputStepper>
-                                        </NumberInput>
+                                        <InputGroup step={1} min={1}>
+                                            <NumberInput defaultValue={height}>
+                                                <NumberInputField
+                                                    type="number"
+                                                    placeholder="height"
+                                                    size="lg"
+                                                    min="1"
+                                                    onChange={(event) => setHeight(Math.abs(Math.trunc(event.currentTarget.value)))}
+                                                />
+                                                {height === '' ? <FormErrorMessage>Height is required.</FormErrorMessage> : ''}
+                                                <NumberInputStepper>
+                                                    <NumberIncrementStepper />
+                                                    <NumberDecrementStepper />
+                                                </NumberInputStepper>
+                                            </NumberInput>
+                                        </InputGroup>
                                     </FormControl>
                                     <FormControl isRequired isInvalid={userWeight === ''}>
                                         <FormLabel>Weight - in kilos</FormLabel>
-                                        <NumberInput defaultValue={userWeight}>
-                                            <NumberInputField
-                                                type="number"
-                                                placeholder="user weight"
-                                                size="lg"
-                                                min="1"
-                                                onChange={(event) => setUserWeight(Math.abs(Math.trunc(event.currentTarget.value)))}
-                                            />
-                                            {userWeight === '' ? <FormErrorMessage>User weight is required.</FormErrorMessage> : ''}
-                                            <NumberInputStepper>
-                                                <NumberIncrementStepper />
-                                                <NumberDecrementStepper />
-                                            </NumberInputStepper>
-                                        </NumberInput>
+                                        <InputGroup step={1} min={1}>
+                                            <NumberInput defaultValue={userWeight}>
+                                                <NumberInputField
+                                                    type="number"
+                                                    placeholder="user weight"
+                                                    size="lg"
+                                                    min="1"
+                                                    onChange={(event) => setUserWeight(Math.abs(Math.trunc(event.currentTarget.value)))}
+                                                />
+                                                {userWeight === '' ? <FormErrorMessage>User weight is required.</FormErrorMessage> : ''}
+                                                <NumberInputStepper>
+                                                    <NumberIncrementStepper />
+                                                    <NumberDecrementStepper />
+                                                </NumberInputStepper>
+                                            </NumberInput>
+                                        </InputGroup>
                                     </FormControl>
                                 </form>
                             </Stack>

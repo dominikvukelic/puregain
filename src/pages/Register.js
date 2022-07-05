@@ -142,51 +142,60 @@ export default function Register() {
                             </FormControl>
                             <FormControl isRequired isInvalid={age === ''}>
                                 <FormLabel>Age</FormLabel>
-                                <NumberInput min="1">
-                                    <NumberInputField
-                                        type="number"
-                                        placeholder="age"
-                                        size="lg"
-                                        onChange={(event) => setAge(Math.abs(Math.trunc(event.currentTarget.value)))}
-                                    />
-                                    {age === '' ? <FormErrorMessage>Age is required.</FormErrorMessage> : ''}
-                                    <NumberInputStepper>
-                                        <NumberIncrementStepper />
-                                        <NumberDecrementStepper />
-                                    </NumberInputStepper>
-                                </NumberInput>
+                                <InputGroup step={1} min={1}>
+                                    <NumberInput>
+                                        <NumberInputField
+                                            type="number"
+                                            placeholder="age"
+                                            size="lg"
+                                            min="1"
+                                            onChange={(event) => setAge(Math.abs(Math.trunc(event.currentTarget.value)))}
+                                        />
+                                        {age === '' ? <FormErrorMessage>Age is required.</FormErrorMessage> : ''}
+                                        <NumberInputStepper>
+                                            <NumberIncrementStepper />
+                                            <NumberDecrementStepper />
+                                        </NumberInputStepper>
+                                    </NumberInput>
+                                </InputGroup>
                             </FormControl>
                             <FormControl isRequired isInvalid={height === ''}>
                                 <FormLabel>Height - in centimeters</FormLabel>
-                                <NumberInput min="1">
-                                    <NumberInputField
-                                        type="number"
-                                        placeholder="user height"
-                                        size="lg"
-                                        onChange={(event) => setHeight(Math.abs(Math.trunc(event.currentTarget.value)))}
-                                    />
-                                    {height === '' ? <FormErrorMessage>Height is required.</FormErrorMessage> : ''}
-                                    <NumberInputStepper>
-                                        <NumberIncrementStepper />
-                                        <NumberDecrementStepper />
-                                    </NumberInputStepper>
-                                </NumberInput>
+                                <InputGroup step={1} min={1}>
+                                    <NumberInput>
+                                        <NumberInputField
+                                            type="number"
+                                            placeholder="user height"
+                                            size="lg"
+                                            min="1"
+                                            onChange={(event) => setHeight(Math.abs(Math.trunc(event.currentTarget.value)))}
+                                        />
+                                        {height === '' ? <FormErrorMessage>Height is required.</FormErrorMessage> : ''}
+                                        <NumberInputStepper>
+                                            <NumberIncrementStepper />
+                                            <NumberDecrementStepper />
+                                        </NumberInputStepper>
+                                    </NumberInput>
+                                </InputGroup>
                             </FormControl>
                             <FormControl isRequired isInvalid={userWeight === ''}>
                                 <FormLabel>Weight - in kilos</FormLabel>
-                                <NumberInput min="1">
-                                    <NumberInputField
-                                        type="number"
-                                        placeholder="user weight"
-                                        size="lg"
-                                        onChange={(event) => setUserWeight(Math.abs(Math.trunc(event.currentTarget.value)))}
-                                    />
-                                    {userWeight === '' ? <FormErrorMessage>User weight is required.</FormErrorMessage> : ''}
-                                    <NumberInputStepper>
-                                        <NumberIncrementStepper />
-                                        <NumberDecrementStepper />
-                                    </NumberInputStepper>
-                                </NumberInput>
+                                <InputGroup step={1} min={1}>
+                                    <NumberInput>
+                                        <NumberInputField
+                                            type="number"
+                                            placeholder="user weight"
+                                            size="lg"
+                                            min="1"
+                                            onChange={(event) => setUserWeight(Math.abs(Math.trunc(event.currentTarget.value)))}
+                                        />
+                                        {userWeight === '' ? <FormErrorMessage>User weight is required.</FormErrorMessage> : ''}
+                                        <NumberInputStepper>
+                                            <NumberIncrementStepper />
+                                            <NumberDecrementStepper />
+                                        </NumberInputStepper>
+                                    </NumberInput>
+                                </InputGroup>
                             </FormControl>
                             <Button className="register-btn" colorScheme="red" width="full" marginTop={4} onClick={handleRegister}>
                                 Register

@@ -19,6 +19,7 @@ import {
     NumberInputStepper,
     NumberDecrementStepper,
     FormControl,
+    InputGroup,
 } from '@chakra-ui/react';
 import { nanoid } from 'nanoid';
 import { getAuth } from 'firebase/auth';
@@ -71,37 +72,41 @@ function AddExercisePopUp({ AddExerciseForTraining }) {
                                     </FormControl>
                                     <FormControl isRequired isInvalid={weight === ''}>
                                         <FormLabel>Weight </FormLabel>
-                                        <NumberInput>
-                                            <NumberInputField
-                                                style={{ height: '48px' }}
-                                                type="number"
-                                                placeholder="weight"
-                                                size="lg"
-                                                min="1"
-                                                onChange={(event) => setWeight(Math.abs(Math.trunc(event.currentTarget.value)))}
-                                            />
-                                            <NumberInputStepper>
-                                                <NumberIncrementStepper />
-                                                <NumberDecrementStepper />
-                                            </NumberInputStepper>
-                                        </NumberInput>
+                                        <InputGroup step={1} min={1}>
+                                            <NumberInput>
+                                                <NumberInputField
+                                                    style={{ height: '48px' }}
+                                                    type="number"
+                                                    placeholder="weight"
+                                                    size="lg"
+                                                    min="1"
+                                                    onChange={(event) => setWeight(Math.abs(Math.trunc(event.currentTarget.value)))}
+                                                />
+                                                <NumberInputStepper>
+                                                    <NumberIncrementStepper />
+                                                    <NumberDecrementStepper />
+                                                </NumberInputStepper>
+                                            </NumberInput>
+                                        </InputGroup>
                                     </FormControl>
                                     <FormControl isRequired isInvalid={reps === ''}>
                                         <FormLabel>Reps </FormLabel>
-                                        <NumberInput>
-                                            <NumberInputField
-                                                style={{ height: '48px' }}
-                                                type="number"
-                                                placeholder="reps"
-                                                size="lg"
-                                                min="1"
-                                                onChange={(event) => setReps(Math.abs(Math.trunc(event.currentTarget.value)))}
-                                            />
-                                            <NumberInputStepper>
-                                                <NumberIncrementStepper />
-                                                <NumberDecrementStepper />
-                                            </NumberInputStepper>
-                                        </NumberInput>
+                                        <InputGroup step={1} min={1}>
+                                            <NumberInput>
+                                                <NumberInputField
+                                                    style={{ height: '48px' }}
+                                                    type="number"
+                                                    placeholder="reps"
+                                                    size="lg"
+                                                    min="1"
+                                                    onChange={(event) => setReps(Math.abs(Math.trunc(event.currentTarget.value)))}
+                                                />
+                                                <NumberInputStepper>
+                                                    <NumberIncrementStepper />
+                                                    <NumberDecrementStepper />
+                                                </NumberInputStepper>
+                                            </NumberInput>
+                                        </InputGroup>
                                     </FormControl>
                                 </form>
                             </Stack>
