@@ -33,6 +33,7 @@ function TrainingPage() {
     const [exerciseForTraining, setexerciseForTraining] = useState([]);
     const [liftedWeight, setliftedWeight] = useState(0);
     const [burnedCalories, setburnedCalories] = useState(0);
+    const [isButtonDisabled, setisButtonDisabled] = useState(true);
 
     const addExerciseForTraining = (data) => {
         setexerciseForTraining([...exerciseForTraining, data]);
@@ -44,6 +45,7 @@ function TrainingPage() {
 
     useEffect(() => {
         setliftedWeight(exerciseForTraining.reduce((sum, t) => sum + t.weight * t.reps, 0));
+        exerciseForTraining.length > 0 ? setisButtonDisabled(false) : setisButtonDisabled(true);
     }, [exerciseForTraining]);
     useEffect(() => {
         setburnedCalories(Math.trunc((trainingDurationtemp / 60) * (6 * userData.userWeight)));
@@ -56,18 +58,23 @@ function TrainingPage() {
     };
 
     const insertTrainingIntoFirebase = () => {
-        const trainingTempdata = {
-            burnedCalories: burnedCalories,
-            date: date,
-            liftedWeight: liftedWeight,
-            trainingName: trainingNametemp,
-            userid: auth.currentUser.uid,
-            exercisesInTraining: exerciseForTraining,
-            trainingDuration: trainingDurationtemp,
-        };
+        if (exerciseForTraining.length > 0) {
+            const trainingTempdata = {
+                burnedCalories: burnedCalories,
+                date: date,
+                liftedWeight: liftedWeight,
+                trainingName: trainingNametemp,
+                userid: auth.currentUser.uid,
+                exercisesInTraining: exerciseForTraining,
+                trainingDuration: trainingDurationtemp,
+            };
+            console.log(exerciseForTraining);
 
-        addTraining(trainingTempdata, 'trainings');
-        navigate('/');
+            addTraining(trainingTempdata, 'trainings');
+            navigate('/');
+        } else {
+            console.log('else');
+        }
     };
 
     if (!auth.currentUser) {
@@ -117,7 +124,7 @@ function TrainingPage() {
                             <p>Burned Calories</p>
                             <h3>{burnedCalories} kcal</h3>
                             console.log(burnedCalories)
-                            <Button colorScheme="teal" onClick={insertTrainingIntoFirebase}>
+                            <Button colorScheme="teal" onClick={insertTrainingIntoFirebase} disabled={isButtonDisabled}>
                                 Finish training
                             </Button>
                         </Stack>
