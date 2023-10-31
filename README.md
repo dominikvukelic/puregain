@@ -1,3 +1,19 @@
+# PureGain - Workout App
+
+PureGain is a workout application developed using the React framework and styled with the Chakra UI CSS framework. It's designed to assist users in managing and tracking their workout routines effectively.
+
+## Features
+
+- **Workout Management:** Create, edit, and manage personalized workout routines tailored to your fitness goals.
+- **Exercise Library:** Access a comprehensive library of exercises with detailed instructions and categorization.
+- **Progress Tracking:** Monitor your progress, track your workout history, and set fitness targets.
+- **Responsive Design:** Built with a mobile-first approach, ensuring a seamless experience across various devices.
+
+## Technologies Used
+
+- **React:** Utilized for the frontend development, enabling a dynamic and interactive user interface.
+- **Chakra UI:** Implemented to style and design the components, providing a consistent and visually appealing layout.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
